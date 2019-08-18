@@ -1,11 +1,20 @@
 import React from 'react';
 import './App.css';
 
+import { Switch, Route } from 'react-router-dom'
+
+import Home from './components/Home'
+import Signup from './components/particular.components/Signup'
+
+
 function App() {
   return (
-    <div>
-      <h1>Handy</h1>
-    </div>
+    <>
+    <Switch>
+       <Route path="/" exact component={Home} /> 
+       <Route exact path='/particular/signup' render={() => <Signup/>}/> 
+    </Switch>
+  </>
   );
 }
 

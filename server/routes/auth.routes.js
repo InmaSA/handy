@@ -3,6 +3,7 @@ const authRoutes = express.Router()
 
 const passport   = require('passport')
 const bcrypt     = require('bcryptjs')
+const nodemailer = require('nodemailer')
 
 
 const Particular    = require('../models/users/Particular.model')
@@ -29,7 +30,6 @@ authRoutes.post('/particular/signup', (req, res, next) => {
             res.status(500).json({message: "Algo salió mal en la comprobación del correo, inténtalo de nuevo"})
             return
         }
-
         if (foundEmail) {
             res.status(400).json({ message: 'Ya existe un usuario registrado con este email' })
             return
@@ -37,11 +37,21 @@ authRoutes.post('/particular/signup', (req, res, next) => {
   
         const salt     = bcrypt.genSaltSync(10)
         const hashPass = bcrypt.hashSync(password, salt)
+
+        // creamos un código aleatorio para el token de confirmación que se enviará por email
+
+        const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        let token = ''
+        for (let i = 0; i < 25; i++) {
+        token += characters[Math.floor(Math.random() * characters.length )]
+        }
+
   
         const NewPart = new Particular({
             username:username,
             email: email,
             password: hashPass,
+            confirmationCode: token
         });
   
         NewPart.save(err => {
@@ -58,8 +68,42 @@ authRoutes.post('/particular/signup', (req, res, next) => {
                 res.status(200).json(NewPart)
             })
         })
+
+        // configuramos nodemailer para el envío del email de confirmación
+
+        let transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: `${process.env.EMAIL}`,
+                pass: `${process.env.PASSWORD}`
+            }
+          })
+  
+        transporter.sendMail({
+        from: 'Handy <noreply@handy.com>',
+        to: email,
+        subject: 'Código de validación de cuenta de usuario en Handy',
+        html: `Bienvenid@ a Handy. Por favor valida tu cuenta haciendo click <a href=http://localhost:5000/api/particular/confirm/${token}>en este enlace</a>.`
+        })
+        .then(info => console.log(info))
+        .catch(error => console.log(error))
+
     })
 })
+
+
+// ruta de validación del email
+
+authRoutes.get('/particular/confirm/:confirmCode', (req,res,next) =>{
+    Particular.find({confirmCode: req.params.confirmationCode})
+    .then( elm => {
+      elm.status = 'Active'
+      console.log(elm)
+      res.redirect('/auth/particular/login')
+    })
+  })
+
+
 
 authRoutes.post('/particular/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
