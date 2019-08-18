@@ -1,0 +1,39 @@
+const Particular    = require('../models/users/Particular.model')
+const LocalStrategy = require('passport-local').Strategy
+const bcrypt        = require('bcryptjs')
+const passport      = require('passport')
+
+passport.serializeUser((loggedInUser, cb) => {
+  cb(null, loggedInUser._id);
+});
+
+passport.deserializeUser((userIdFromSession, cb) => {
+  Particular.findById(userIdFromSession, (err, userDocument) => {
+    if (err) {
+      cb(err);
+      return;
+    }
+    cb(null, userDocument);
+  });
+});
+
+passport.use(new LocalStrategy((email, password, next) => {
+  Particular.findOne({ email }, (err, foundUser) => {
+    if (err) {
+      next(err);
+      return;
+    }
+
+    if (!foundUser) {
+      next(null, false, { message: 'Email incorrecto.' });
+      return;
+    }
+
+    if (!bcrypt.compareSync(password, foundUser.password)) {
+      next(null, false, { message: 'Contraseña incorrecta.' });
+      return;
+    }
+
+    next(null, foundUser);
+  });
+}));
