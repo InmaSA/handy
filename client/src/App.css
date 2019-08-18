@@ -1,2 +1,49 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300px; 
+}
 
+
+
+/* ESTILO DE LA HOME PAGE */
+
+
+.home-big-logo {
+  border-radius: 8px;
+  width: 100%;
+}
+
+.hero h1 {
+  color: #60b0f4;
+  font-weight: 600px;
+  display: inline-block;
+}
+
+.home-row {
+  justify-content: space-evenly;
+}
+
+.home-cards {
+  color: white;
+  background-color: #60b0f4;
+  border-radius: 8px;
+  height: 350px;
+}
+
+.home-cards p {
+  text-align: center;
+}
+
+.button {
+  background-color: white;
+  border-radius: 20px;
+  display: block;
+  width: 40%;
+  color: #60b0f4;
+  font-weight: 600;
+  margin: 10px auto;
+  padding: 10px; 
+  text-decoration: none;
+  
+}
 
