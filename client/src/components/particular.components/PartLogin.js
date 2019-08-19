@@ -18,7 +18,7 @@ class PartLogin extends Component {
     .then(theLoggedUser => {
       this.setState({password: '', username: '' })
       this.props.setUser(theLoggedUser)
-      this.props.history.push('/particular/profile')
+      this.props.history.push('/')
     
     })
     .catch((err) => console.log('error al mandar la info de logeo al back', err.response.data.message))

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Link } from 'react-router-dom'
 
 import AuthServices from './services/auth.services'
 import ProtectedRoute from './components/routes/ProtectedRoute'
@@ -48,8 +48,9 @@ class App extends Component {
     this.fetchUser()
     
     if (this.state.loggedInUser) {
-    return (
-      <>
+      return (
+        <>
+        <Link to="/particular/profile">ESTOY AQUI</Link>
         <Switch>
            <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} component={PartHomePage} />   
            <Route path="/" exact component={Home} /> 
