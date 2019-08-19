@@ -5,12 +5,12 @@ const particularSchema = new Schema({
   username: {type: String, require:true},
   email:    {type: String, require: true},
   password: {type: String, require: true},
-  status: {
-            type: String,
-            enum: ['Pending Confirmation', 'Active'],
-            default: 'Pending Confirmation'
-  },
-  confirmationCode: String,
+  // status: {
+  //           type: String,
+  //           enum: ['Pending Confirmation', 'Active'],
+  //           default: 'Pending Confirmation'
+  // },
+  // confirmationCode: String,
 
   }, 
   {timestamps: true}

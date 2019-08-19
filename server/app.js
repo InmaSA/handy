@@ -12,10 +12,12 @@ const path         = require('path')
 require('./configs/mongoose.config')
 require('./configs/passport.config')
 
-const session       = require('express-session')
+const session       = require('express-session')  
 const passport      = require('passport')
+const mongoose = require('mongoose')
+const MongoStore = require('connect-mongo')(session);
 
-
+const cors          = require('cors')
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
@@ -37,18 +39,34 @@ app.use(require('node-sass-middleware')({
 }));
       
 
+// CORS middleware
+
+const whitelist = ['http://localhost:3000']
+const corsOptions = {
+  origin: (origin, cb) => {
+    const originIsWhitelisted = whitelist.includes(origin)
+    cb(null, originIsWhitelisted)
+  },
+  credentials: true
+}
+app.use(cors(corsOptions))
+
+
+
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
-// Session settings
+// Session passport settings
 
 app.use(session({
   secret:"some secret goes here",
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 
 app.use(passport.initialize())
