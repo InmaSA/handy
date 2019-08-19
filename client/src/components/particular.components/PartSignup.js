@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import AuthServices from '../../services/auth.services';
+import React, { Component } from 'react'
+import AuthServices from '../../services/auth.services'
 
 class PartSignup extends Component {
   constructor(props){
     super(props);
-    this.state = { username: '', password: '', email: '' };
-    this.authServices = new AuthServices();
+    this.state = { username: '', password: '', email: '' }
+    this.authServices = new AuthServices()
   }
 
   handleChangeInput = e => this.setState({ [e.target.name]: e.target.value })
@@ -18,7 +18,7 @@ class PartSignup extends Component {
     .then((theNewUser) => {
       this.setState({username:'', password: '', email: '' })
       this.props.setUser(theNewUser)
-      this.props.history.push('/')
+      this.props.history.push('/particular/profile')
     
     })
     .catch((err) => console.log('error al mandar la info de registro al back', err))

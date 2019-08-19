@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 
-import { Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 import AuthServices from './services/auth.services'
 import ProtectedRoute from './components/routes/ProtectedRoute'
@@ -38,7 +38,7 @@ class App extends Component {
   logout = () => {
     this.authServices.logout()
         .then(x => {
-            this.props.setUser(null)
+            this.setTheUser(null)
         })
         .catch(err => console.log(err))
 }
@@ -50,27 +50,26 @@ class App extends Component {
     if (this.state.loggedInUser) {
       return (
         <>
-        <Link to="/particular/profile">ESTOY AQUI</Link>
-        <Switch>
-           <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} component={PartHomePage} />   
-           <Route path="/" exact component={Home} /> 
-                 
-           {/* <Route exact path="/particular/confirm/:confirmationCode" render={() => <Home/>}/> */}
-        </Switch>
-        <button onClick={this.logout}>logout</button>
-      </>
+            <Switch>
+            <Route path="/" exact component={Home} />
+              <Route path="/logout" component={Home}/> 
+              <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} component={PartHomePage} />   
+            </Switch>
+            <button onClick={this.logout}>logout</button>
+        </>
       )
       } else {
-        return (
-          <>
-            <Switch>
-                <Route path="/" exact component={Home} /> 
-                <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} component={PartHomePage} />   
-                <Route exact path='/particular/login'  render={match => <PartLogin {...match}  setUser={this.setTheUser} />} />
-                <Route exact path='/particular/signup' render={match => <PartSignup {...match} setUser={this.setTheUser} />} /> 
-            </Switch>
-          </>
-        )
+          return (
+            <>
+              <Switch>
+                  <Route path="/" exact component={Home} />
+                  <Route path="/logout" component={Home}/>  
+                  <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={PartHomePage} />   
+                  <Route exact path='/particular/login'  render={match => <PartLogin {...match}  setUser={this.setTheUser} />} />
+                  <Route exact path='/particular/signup' render={match => <PartSignup {...match} setUser={this.setTheUser} />} /> 
+              </Switch>
+            </>
+          )
       }
   }
 }
