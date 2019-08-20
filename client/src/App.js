@@ -49,7 +49,7 @@ class App extends Component {
 }
 
   render() {
-
+    console.log(this.setTheUser)
     this.fetchUser()
     
     if (this.state.loggedInUser) {
@@ -58,10 +58,9 @@ class App extends Component {
             <Switch>
             <Route path="/" exact component={Home} />
               <Route path="/logout" component={Home}/> 
-              <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} component={PartHomePage} />   
-              <ProtectedRoute path='/professional/profile' user={this.state.loggedInUser} component={ProfHomePage} />   
+              <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={PartHomePage} />   
+              <ProtectedRoute path='/professional/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={ProfHomePage} />   
             </Switch>
-            <button onClick={this.logout}>logout</button>
         </>
       )
       } else {
@@ -71,6 +70,7 @@ class App extends Component {
                   <Route path="/" exact component={Home} />
                   <Route path="/logout" component={Home}/>  
                   <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={PartHomePage} />   
+                  <ProtectedRoute path='/professional/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={ProfHomePage} />   
                   <Route exact path='/particular/login'  render={match => <PartLogin {...match}  setUser={this.setTheUser} />} />
                   <Route exact path='/particular/signup' render={match => <PartSignup {...match} setUser={this.setTheUser} />} /> 
                   <Route exact path='/professional/login'  render={match => <ProfLogin {...match}  setUser={this.setTheUser} />} />

@@ -14,16 +14,12 @@ class ProfHomePage extends Component {
   logout = () => {
     this.authServices.logout()
     .then(x => {
-      // console.log(this)
-
-      this.props.loggedInUser.setUser(null)
+      this.props.setUser(null)
         })
         .catch(err => console.log(err))
   }
 
   render() {
-    console.log(this)
-    console.log(this.props.loggedInUser)
     return(
       <>
         <header>
@@ -33,7 +29,7 @@ class ProfHomePage extends Component {
                     <li><Link to="#">Mis favoritos</Link></li>
                     <li><Link to="#">Mi calendario</Link></li>
                     <li><Link to="#">Editar perfil</Link></li>
-                    <li><div onClick={this.logout}>Cerrar sesión</div></li>
+                    {/* <li><div onClick={this.logout}>Cerrar sesión</div></li> */}
                     <button onClick={this.logout}>logout</button>
                     {/* <li><small>Bienvenid@, {saludo}</small></li> */}
                 </ul>
