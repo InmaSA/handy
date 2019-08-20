@@ -7,9 +7,14 @@ import AuthServices from './services/auth.services'
 import ProtectedRoute from './components/routes/ProtectedRoute'
 
 import Home from './components/Home'
+
 import PartSignup from './components/particular.components/PartSignup'
 import PartLogin from './components/particular.components/PartLogin'
 import PartHomePage from './components/particular.components/PartHomePage'
+
+import ProfSignup from './components/professional.components/ProfSignup'
+import ProfLogin from './components/professional.components/ProfLogin'
+import ProfHomePage from './components/professional.components/ProfHomePage'
 
 
 class App extends Component {
@@ -54,6 +59,7 @@ class App extends Component {
             <Route path="/" exact component={Home} />
               <Route path="/logout" component={Home}/> 
               <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} component={PartHomePage} />   
+              <ProtectedRoute path='/professional/profile' user={this.state.loggedInUser} component={ProfHomePage} />   
             </Switch>
             <button onClick={this.logout}>logout</button>
         </>
@@ -67,6 +73,8 @@ class App extends Component {
                   <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={PartHomePage} />   
                   <Route exact path='/particular/login'  render={match => <PartLogin {...match}  setUser={this.setTheUser} />} />
                   <Route exact path='/particular/signup' render={match => <PartSignup {...match} setUser={this.setTheUser} />} /> 
+                  <Route exact path='/professional/login'  render={match => <ProfLogin {...match}  setUser={this.setTheUser} />} />
+                  <Route exact path='/professional/signup' render={match => <ProfSignup {...match} setUser={this.setTheUser} />} /> 
               </Switch>
             </>
           )

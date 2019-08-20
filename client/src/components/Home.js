@@ -40,7 +40,12 @@ class Home extends Component {
 
             <div className="col-md-5 home-cards">
 
-                <h2>Aquí van los profesionales</h2>
+                <h2>Si eres un profesional, este es tu sitio:</h2>
+
+                <Link className="button" to="/professional/login">Accede a tu cuenta</Link>
+                <p>¿Aún no eres usuario?</p>
+
+                <Link className="button" to="/professional/signup">Sign up</Link>
 
             </div>
           </div>
