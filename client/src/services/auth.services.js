@@ -12,6 +12,9 @@ export default class AuthServices {
     signupPart = (username, email, password) => this.service.post('particular/signup', {username, email, password})
     loginPart = (username, password) => this.service.post('particular/login', {username, password})
   
+    signupProf = (username, email, password, job, description, localities, spain) => this.service.post('professional/signup', {username, email, password, job, description, localities, spain})
+    loginProf = (username, password) => this.service.post('professional/login', {username, password})
+ 
 
     // confirmCodePart = (confirmationCode) => {
     //   return this.service.post('/particular/confirm/:confirmationCode', {confirmationCode})

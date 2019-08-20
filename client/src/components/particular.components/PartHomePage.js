@@ -13,14 +13,17 @@ class PartHomePage extends Component {
 
   logout = () => {
     this.authServices.logout()
-        .then(x => {
-            this.props.setUser(null)
+    .then(x => {
+      // console.log(this)
+
+      this.props.loggedInUser.setUser(null)
         })
         .catch(err => console.log(err))
   }
 
   render() {
-
+    console.log(this)
+    console.log(this.props.loggedInUser)
     return(
       <>
         <header>
@@ -31,7 +34,7 @@ class PartHomePage extends Component {
                     <li><Link to="#">Mi calendario</Link></li>
                     <li><Link to="#">Editar perfil</Link></li>
                     <li><div onClick={this.logout}>Cerrar sesión</div></li>
-                    {/* <button onClick={this.logout}>logout</button> */}
+                    <button onClick={this.logout}>logout</button>
                     {/* <li><small>Bienvenid@, {saludo}</small></li> */}
                 </ul>
             </nav>
