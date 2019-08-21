@@ -9,7 +9,7 @@ export default class AuthServices {
       })
   }
 
-    signupPart = (username, email, password) => this.service.post('particular/signup', {username, email, password})
+    signupPart = (username, email,phoneNumber, password) => this.service.post('particular/signup', {username, email, phoneNumber, password})
     loginPart = (username, password) => this.service.post('particular/login', {username, password})
   
     signupProf = (username, email, password, job, description, localities, spain) => this.service.post('professional/signup', {username, email, password, job, description, localities, spain})

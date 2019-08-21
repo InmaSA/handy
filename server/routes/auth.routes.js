@@ -14,7 +14,7 @@ const Professional  = require('../models/users/Professional.model')
 
 authRoutes.post('/particular/signup', (req, res, next) => {
 
-    const { username, email, password } = req.body
+    const { username, email, phoneNumber, password } = req.body
   
     if (!username || !password) {
       res.status(400).json({ message: 'Por favor, introduce tu email y una contraseña' })
@@ -52,8 +52,8 @@ authRoutes.post('/particular/signup', (req, res, next) => {
         const NewPart = new Particular({
             username:username,
             email: email,
+            phoneNumber: phoneNumber,
             password: hashPass,
-            // confirmationCode: token
         });
   
         NewPart.save(err => {

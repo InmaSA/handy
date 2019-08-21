@@ -11,6 +11,7 @@ import Home from './components/Home'
 import PartSignup from './components/particular.components/PartSignup'
 import PartLogin from './components/particular.components/PartLogin'
 import PartHomePage from './components/particular.components/PartHomePage'
+import ParticularCard from './components/particular.components/ParticularCard'
 
 import ProfSignup from './components/professional.components/ProfSignup'
 import ProfLogin from './components/professional.components/ProfLogin'
@@ -49,15 +50,16 @@ class App extends Component {
 }
 
   render() {
-    console.log(this.setTheUser)
+
     this.fetchUser()
     
     if (this.state.loggedInUser) {
       return (
         <>
             <Switch>
-            <Route path="/" exact component={Home} />
+              <Route path="/" exact component={Home} />
               <Route path="/logout" component={Home}/> 
+              <Route path='/search/:job' render={match => <ParticularCard {...match} user={this.state.loggedInUser} />} />
               <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={PartHomePage} />   
               <ProtectedRoute path='/professional/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={ProfHomePage} />   
             </Switch>

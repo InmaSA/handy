@@ -56,3 +56,15 @@ label {
 .submit-btn {
   display: block;
 }
+
+
+/* PROFILE DEL PARTICULAR */
+
+.section {
+  background-color: #60b0f4; 
+  
+}
+.section img {
+  width: 100%;
+  margin: 0 auto;
+}

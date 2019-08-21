@@ -20,6 +20,7 @@ class ProfHomePage extends Component {
   }
 
   render() {
+    console.log(this.props.LoggedInUser)
     return(
       <>
         <header>

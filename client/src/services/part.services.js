@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export default class ProfServices {
+export default class PartServices {
   constructor() {
 
       this.service = axios.create({
@@ -8,6 +8,13 @@ export default class ProfServices {
         withCredentials: true
       })
   }
+
+  getProfessionals = job =>  this.service.get(`search/${job}`)
+
+
+// getProfessionals = (job) => {
+//   Axios.get(`turutadeback/${job}`)
+// }
 
   // getCoasters = () => this.service.get('getAllCoasters')
   // getOneCoaster = id => this.service.get(`getOneCoaster/${id}`)
