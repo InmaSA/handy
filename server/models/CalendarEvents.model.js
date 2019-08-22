@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const calendarEventsSchema = new Schema({
-  date: {type: Date, require:true},
+  date: {type: String, require:true},
   event: {type: String, require: true},
   particularId: {type: Schema.Types.ObjectId, require: true},
   particularName: {type: String, require: true},

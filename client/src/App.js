@@ -16,6 +16,7 @@ import ParticularCard from './components/particular.components/ParticularCard'
 import ProfSignup from './components/professional.components/ProfSignup'
 import ProfLogin from './components/professional.components/ProfLogin'
 import ProfHomePage from './components/professional.components/ProfHomePage'
+import Agenda from './components/professional.components/Agenda'
 
 
 class App extends Component {
@@ -42,6 +43,7 @@ class App extends Component {
   }
 
   logout = () => {
+
     this.authServices.logout()
         .then(x => {
             this.setTheUser(null)
@@ -57,10 +59,11 @@ class App extends Component {
       return (
         <>
             <Switch>
-              <Route path="/" exact component={Home} />
-              <Route path="/logout" component={Home}/> 
+      <Route path="/" exact render={() => <Home setUser={this.setTheUser}></Home>} />
+              {/* <Route path="/logout" component={Home}/>  */}
               <Route path='/search/:job' render={match => <ParticularCard {...match} user={this.state.loggedInUser} />} />
               <Route path='/postEvents' />
+              <Route path='getProfEvents/:profId' render={match => <Agenda {...match}/>} />
               <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={PartHomePage} />   
               <ProtectedRoute path='/professional/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={ProfHomePage} />   
             </Switch>
@@ -70,8 +73,8 @@ class App extends Component {
           return (
             <>
               <Switch>
-                  <Route path="/" exact component={Home} />
-                  <Route path="/logout" component={Home}/>  
+              <Route path="/" exact render={() => <Home setUser={this.setTheUser}></Home>} />
+                  {/* <Route path="/logout" component={Home}/>   */}
                   <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={PartHomePage} />   
                   <ProtectedRoute path='/professional/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={ProfHomePage} />   
                   <Route exact path='/particular/login'  render={match => <PartLogin {...match}  setUser={this.setTheUser} />} />

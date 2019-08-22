@@ -4,20 +4,37 @@ const LocalStrategy = require('passport-local').Strategy
 const bcrypt        = require('bcryptjs')
 const passport      = require('passport')
 
-passport.serializeUser((loggedInUser, cb) => {
-  
-  cb(null, loggedInUser._id)
+passport.serializeUser((obj, done) => {
+
+  if (obj instanceof Particular) {
+    done(null, { id: obj.id, type: 'Particular' });
+  } else {
+    done(null, { id: obj.id, type: 'Professional' });
+  }
+
 });
 
-passport.deserializeUser((userIdFromSession, cb) => {
-  Particular.findById(userIdFromSession, (err, userDocument) => {
-    if (err) {
-      cb(err)
-      return
-    }
-    cb(null, userDocument)
-  })
-  
+passport.deserializeUser((obj, cb) => {
+
+  if (obj.type === 'Particular') {
+    Particular.findById(obj.id, (err, userDocument) => {
+        if (err) {
+          cb(err)
+          return
+        }
+        cb(null, userDocument)
+      })
+
+  } else {
+    Professional.findById(obj.id, (err, userDocument) => {
+      if (err) {
+        cb(err)
+        return
+      }
+      cb(null, userDocument)
+    })
+  }
+
 })
 
 //  ESTRATEGIA PARA EL PARTICULAR

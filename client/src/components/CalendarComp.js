@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Calendar from 'react-calendar';
+import Calendar from 'react-calendar'
 
 import EventsServices from '../services/events.services'
 
@@ -20,38 +20,48 @@ class CalendarComp extends Component {
       showModal: false
     }
     this.eventsServices = new EventsServices()
+
   }
 
   handleModalOpen = () => this.setState({ showModal: true })
   handleModalClose = () => this.setState({ showModal: false })
 
 
-  onClickDay = (value) => this.setState({date: value})
+  onClickDay = (value) => {
+    let valueOK = value.toUTCString().slice(0,16)
+    this.setState({date: valueOK})
+  }
   handleChangeInput = e => this.setState({ [e.target.name]: e.target.value })
   
 
   handleFormSubmit = e => {
     e.preventDefault()
-    console.log()
+
     this.setState({
       professionalId: this.props.profId,
       particularName: this.props.part.username,
       particularPhone: this.props.part.phoneNumber,
       particularEmail: this.props.part.email,
       particularId: this.props.part._id
+    }, ()=> {
+
+      const {date, event, particularId, particularName, particularEmail, particularPhone, professionalId} = this.state
+      console.log(date, event, particularId, particularName, particularEmail, particularPhone, professionalId)
+      this.eventsServices.postEvents({date, event, particularId, particularName, particularEmail, particularPhone, professionalId})
+      .then(() => {
+
+        this.setState({      
+          date: '',
+          event: '',
+          particularId: '',
+          particularName: '',
+          particularEmail: '',
+          particularPhone: '',
+          professionalId: '',
+          showModal: false})
+      })
+      .catch((err) => console.log(err))
     })
-    const {date, event, particularId, particularName, particularEmail, particularPhone, professionalId} = this.state
-    this.eventsServices.postEvents({date, event, particularId, particularName, particularEmail, particularPhone, professionalId})
-    .then(() => this.setState({      
-        date: '',
-        event: '',
-        particularId: '',
-        particularName: '',
-        particularEmail: '',
-        particularPhone: '',
-        professionalId: '',
-        showModal: false}))
-    .catch((err) => console.log(err))
   }
 
   onChange = () => {

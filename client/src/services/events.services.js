@@ -10,5 +10,6 @@ export default class EventsServices {
   }
 
  postEvents = theNewEvent => this.service.post(`postEvents`, theNewEvent)
+ getProfEvents = profId => this.service.get(`getProfEvents/${profId}`) 
 
 }

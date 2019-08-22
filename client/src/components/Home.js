@@ -1,17 +1,29 @@
   
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import AuthServices from '../services/auth.services'
 
 class Home extends Component {
 
   constructor (){
     super()
     this.state = {}
+    this.authServices = new AuthServices
   }
+  logout = () => {
+    console.log(this.authServices)
+    this.authServices.logout()
+        .then(x => {
+            this.props.setUser(null)
+        })
+        .catch(err => console.log(err))
+}
 
   render () {
     return (
       <>
+                          <button onClick={() => this.logout()}>logout</button>
+
         <header className="container hero">
           <div className="row">
               <div className="col-md-4">

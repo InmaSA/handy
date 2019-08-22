@@ -3,7 +3,6 @@ const authRoutes = express.Router()
 
 const passport   = require('passport')
 const bcrypt     = require('bcryptjs')
-// const nodemailer = require('nodemailer')
 
 
 const Particular    = require('../models/users/Particular.model')
@@ -71,41 +70,8 @@ authRoutes.post('/particular/signup', (req, res, next) => {
 
             })
         })
-
-        // // configuramos nodemailer para el envío del email de confirmación
-
-        // let transporter = nodemailer.createTransport({
-        //     service: 'Gmail',
-        //     auth: {
-        //         user: `${process.env.EMAIL}`,
-        //         pass: `${process.env.PASSWORD}`
-        //     }
-        //   })
-  
-        // transporter.sendMail({
-        // from: 'Handy <noreply@handy.com>',
-        // to: email,
-        // subject: 'Código de validación de cuenta de usuario en Handy',
-        // html: `Bienvenid@ a Handy. Por favor valida tu cuenta haciendo click <a href=http://localhost:5000/api/particular/confirm/${token}>en este enlace</a>.`
-        // })
-        // .then(info => console.log(info))
-        // .catch(error => console.log(error))
-
     })
 })
-
-
-// // ruta de validación del email
-
-// authRoutes.get('/particular/confirm/:confirmationCode', (req,res,next) =>{
-//     Particular.findOneAndUpdate({confirmationCode: req.params.confirmationCode}, status='Active')
-//     .then( elm => {
-//     //   elm.status = 'Active'
-//       console.log(elm)
-//     //   res.redirect('/auth/particular/login')
-//     })
-//   })
-
 
 
 authRoutes.post('/particular/login', (req, res, next) => {
@@ -227,6 +193,7 @@ authRoutes.post('/professional/login', (req, res, next) => {
 
 authRoutes.post('/logout', (req, res, next) => {
   req.logout()
+  console.log("logout")
   res.status(200).json({ message: 'Log out success!' })
 })
 

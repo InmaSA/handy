@@ -12,6 +12,7 @@ class PartHomePage extends Component {
 
   }
 
+  
   logout = () => {
     this.authServices.logout()
     .then(x => {
@@ -29,10 +30,10 @@ class PartHomePage extends Component {
             <nav>
                 <ul>
                     <li><Link to="#">Mis favoritos</Link></li>
-                    <li><Link to="#">Mi calendario</Link></li>
+                  
                     <li><Link to="#">Editar perfil</Link></li>
                     <li><small>Bienvenid@, {this.props.loggedInUser.data.username}</small></li>
-                    {/* <li><div onClick={this.logout}>Cerrar sesión</div></li> */}
+                   
                     <button onClick={() => this.logout()}>logout</button>
                 </ul>
             </nav>

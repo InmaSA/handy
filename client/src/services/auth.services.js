@@ -22,7 +22,10 @@ export default class AuthServices {
     // }
 
 
-    logout = () => this.service.post('logout')
+    logout = () => {
+      console.log("service de logout")
+     return this.service.post('logout')
+    }
     loggedin = () => this.service.get('loggedin')
 
 }
