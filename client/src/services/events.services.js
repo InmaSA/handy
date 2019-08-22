@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export default class PartServices {
+export default class EventsServices {
   constructor() {
 
       this.service = axios.create({
@@ -9,7 +9,6 @@ export default class PartServices {
       })
   }
 
-  getProfessionals = job =>  this.service.get(`search/${job}`)
+ postEvents = theNewEvent => this.service.post(`postEvents`, theNewEvent)
 
-
-}  
+}

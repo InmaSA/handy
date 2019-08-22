@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import Calendar from 'react-calendar';
 
+import EventsServices from '../services/events.services'
+
 import Modal from 'react-bootstrap/Modal'
 
 
@@ -17,7 +19,7 @@ class CalendarComp extends Component {
       professionalId: '',
       showModal: false
     }
-    
+    this.eventsServices = new EventsServices()
   }
 
   handleModalOpen = () => this.setState({ showModal: true })
@@ -38,24 +40,24 @@ class CalendarComp extends Component {
       particularEmail: this.props.part.email,
       particularId: this.props.part._id
     })
-    // const {username, password} = this.state
-    // this.authServices.loginPart(username, password)
-    // .then(theLoggedUser => {
-    //   this.setState({password: '', username: '' })
-    //   this.props.setUser(theLoggedUser)
-    //   this.props.history.push('/particular/profile')
-    
-    // })
-    // .catch((err) => console.log('error al mandar la info de logeo al back', err.response.data.message))
+    const {date, event, particularId, particularName, particularEmail, particularPhone, professionalId} = this.state
+    this.eventsServices.postEvents({date, event, particularId, particularName, particularEmail, particularPhone, professionalId})
+    .then(() => this.setState({      
+        date: '',
+        event: '',
+        particularId: '',
+        particularName: '',
+        particularEmail: '',
+        particularPhone: '',
+        professionalId: '',
+        showModal: false}))
+    .catch((err) => console.log(err))
   }
-
-
-
 
   onChange = () => {
     this.handleModalOpen()
   }
-  // onChange = (value) => alert(value)
+ 
 
   render() {
     return (

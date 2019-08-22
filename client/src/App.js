@@ -60,6 +60,7 @@ class App extends Component {
               <Route path="/" exact component={Home} />
               <Route path="/logout" component={Home}/> 
               <Route path='/search/:job' render={match => <ParticularCard {...match} user={this.state.loggedInUser} />} />
+              <Route path='/postEvents' />
               <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={PartHomePage} />   
               <ProtectedRoute path='/professional/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={ProfHomePage} />   
             </Switch>

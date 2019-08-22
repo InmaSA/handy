@@ -86,5 +86,7 @@ app.use('/api', require('./routes/auth.routes'))
 
 app.use('/api', require('./routes/part.routes'))
 
+app.use('/api', require('./routes/events.routes'))
+
 
 module.exports = app;

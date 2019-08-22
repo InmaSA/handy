@@ -20,18 +20,19 @@ class ProfHomePage extends Component {
   }
 
   render() {
-    console.log(this.props.LoggedInUser)
+
     return(
       <>
         <header>
             <h2>Home page de un profesional</h2>
             <nav>
                 <ul>
+                    <li><small>Bienvenid@, {this.props.loggedInUser.data.username}</small></li>
                     <li><Link to="#">Mis favoritos</Link></li>
-                    <li><Link to="#">Mi calendario</Link></li>
                     <li><Link to="#">Editar perfil</Link></li>
-                    {/* <li><div onClick={this.logout}>Cerrar sesión</div></li> */}
-                    <button onClick={this.logout}>logout</button>
+                    <li><Link to="/agenda">Mi agenda</Link></li>
+                    
+                    <button onClick={() => this.logout()}>logout</button>
                     {/* <li><small>Bienvenid@, {saludo}</small></li> */}
                 </ul>
             </nav>
