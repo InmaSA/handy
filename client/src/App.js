@@ -10,6 +10,7 @@ import Home from './components/Home'
 
 import PartSignup from './components/particular.components/PartSignup'
 import PartLogin from './components/particular.components/PartLogin'
+import NavBarPart from './components/particular.components/Navbar.Part'
 import PartHomePage from './components/particular.components/PartHomePage'
 import ParticularCard from './components/particular.components/ParticularCard'
 
@@ -55,25 +56,40 @@ class App extends Component {
 
     this.fetchUser()
     
-    if (this.state.loggedInUser) {
+    if (this.state.loggedInUser && this.state.loggedInUser.data.role === 'PROF') {
       return (
         <>
+            {/* <NavBar setUser={this.setTheUser} userInSession={this.state.loggedInUser} /> */}
+
             <Switch>
-      <Route path="/" exact render={() => <Home setUser={this.setTheUser}></Home>} />
-              {/* <Route path="/logout" component={Home}/>  */}
-              <Route path='/search/:job' render={match => <ParticularCard {...match} user={this.state.loggedInUser} />} />
-              <Route path='/postEvents' />
-              <Route path='getProfEvents/:profId' render={match => <Agenda {...match}/>} />
-              <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={PartHomePage} />   
-              <ProtectedRoute path='/professional/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={ProfHomePage} />   
+                <Route path="/" exact render={() => <Home setUser={this.setTheUser}></Home>} />
+                {/* <Route path="/logout" component={Home}/>  */}   
+                <ProtectedRoute path='/professional/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={ProfHomePage} />   
             </Switch>
         </>
-      )
-      } else {
+      ) 
+      } else if (this.state.loggedInUser && this.state.loggedInUser.data.role === 'PART') {
+    
+          return (
+            <>
+              <NavBarPart setUser={this.setTheUser} userInSession={this.state.loggedInUser} />
+
+              <Switch>
+                  <Route path="/" exact render={() => <Home setUser={this.setTheUser}></Home>} />
+                    {/* <Route path="/logout" component={Home}/>  */}
+                    <Route path='/search/:job' render={match => <ParticularCard {...match} user={this.state.loggedInUser} />} />
+                    <Route path='/postEvents' />
+                    <Route path='getProfEvents/:profId' render={match => <Agenda {...match}/>} />
+                    <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={PartHomePage} />   
+              </Switch>
+          </>
+          )
+      }
+      else {
           return (
             <>
               <Switch>
-              <Route path="/" exact render={() => <Home setUser={this.setTheUser}></Home>} />
+                  <Route path="/" exact render={() => <Home setUser={this.setTheUser}></Home>} />
                   {/* <Route path="/logout" component={Home}/>   */}
                   <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={PartHomePage} />   
                   <ProtectedRoute path='/professional/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={ProfHomePage} />   

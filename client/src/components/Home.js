@@ -10,19 +10,10 @@ class Home extends Component {
     this.state = {}
     this.authServices = new AuthServices
   }
-  logout = () => {
-    console.log(this.authServices)
-    this.authServices.logout()
-        .then(x => {
-            this.props.setUser(null)
-        })
-        .catch(err => console.log(err))
-}
 
   render () {
     return (
       <>
-                          <button onClick={() => this.logout()}>logout</button>
 
         <header className="container hero">
           <div className="row">

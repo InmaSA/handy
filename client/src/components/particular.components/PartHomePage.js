@@ -26,17 +26,7 @@ class PartHomePage extends Component {
     return(
       <div className="container part-home-page">
         <header>
-            <h2>Home page de un particular</h2>
-            <nav>
-                <ul>
-                    <li><Link to="#">Mis favoritos</Link></li>
-                  
-                    <li><Link to="#">Editar perfil</Link></li>
-                    <li><small>Bienvenid@, {this.props.loggedInUser.data.username}</small></li>
-                   
-                    <button onClick={() => this.logout()}>logout</button>
-                </ul>
-            </nav>
+
         </header>
         <section className="row justify-content-around">
 
