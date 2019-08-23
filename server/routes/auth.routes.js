@@ -39,14 +39,6 @@ authRoutes.post('/particular/signup', (req, res, next) => {
         const salt     = bcrypt.genSaltSync(10)
         const hashPass = bcrypt.hashSync(password, salt)
 
-        // // creamos un código aleatorio para el token de confirmación que se enviará por email
-
-        // const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-        // let token = ''
-        // for (let i = 0; i < 25; i++) {
-        // token += characters[Math.floor(Math.random() * characters.length )]
-        // }
-
   
         const NewPart = new Particular({
             username:username,
@@ -105,7 +97,7 @@ authRoutes.post('/particular/login', (req, res, next) => {
 
 authRoutes.post('/professional/signup', (req, res, next) => {
 
-    const { username, email, password, job, description, localities, spain } = req.body
+    const { username, email, password, job, description, localities, spain, imageUrl } = req.body
   
     if (!username || !password) {
       res.status(400).json({ message: 'Por favor, introduce tu email y una contraseña' })
@@ -139,8 +131,11 @@ authRoutes.post('/professional/signup', (req, res, next) => {
             job: job,
             description: description,
             localities: localities,
-            spain: spain
+            spain: spain,
+            imageUrl: imageUrl
         });
+
+        console.log(NewPart)
   
         NewPart.save(err => {
             if (err) {

@@ -89,5 +89,6 @@ app.use('/api', require('./routes/part.routes'))
 
 app.use('/api', require('./routes/events.routes'))
 
+app.use('/api', require('./routes/file-upload.routes'))
 
 module.exports = app;

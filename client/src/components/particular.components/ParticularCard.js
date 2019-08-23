@@ -41,11 +41,16 @@ class ParticularCard extends Component {
                 return(
                   
                 <div className="col-md-5" key={prof._id}>
-                    <h3>{prof.username}</h3>
-                    <h4>{prof.job}</h4>
-                    <p>{prof.description}</p>
-                    <h4>{prof.localities}</h4>
-                    <button value={prof._id} onClick={this.handleModalOpen}>Agendar una cita</button>
+                    <div className="col-sm-4">
+                        <img src={prof.imageUrl} alt={prof.username}></img>
+                    </div>
+                        <div className="col-sm-6">
+                        <h3>{prof.username}</h3>
+                        <h4>{prof.job}</h4>
+                        <p>{prof.description}</p>
+                        <h4>{prof.localities}</h4>
+                        <button value={prof._id} onClick={this.handleModalOpen}>Agendar una cita</button>
+                    </div>
                 </div>)
               })
             }

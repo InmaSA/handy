@@ -4,7 +4,7 @@ import AuthServices from '../../services/auth.services'
 class ProfSignup extends Component {
   constructor(props){
     super(props);
-    this.state = { username: '', password: '', email: '', job: '', description: '', localities: '', spain: '' }
+    this.state = { username: '', password: '', email: '', job: 'albañilería', description: '', localities: 'Albacete', spain: '', imageUrl: '' }
     this.authServices = new AuthServices()
   }
 
@@ -22,15 +22,31 @@ class ProfSignup extends Component {
 
   handleFormSubmit = e => {
     e.preventDefault()
-    const {username, email, password, job, description, localities, spain} = this.state
-    this.authServices.signupProf(username, email, password, job, description, localities, spain)
+
+    const {username, email, password, job, description, localities, spain, imageUrl} = this.state
+
+    this.authServices.signupProf({username, email, password, job, description, localities, spain, imageUrl})
     .then((theNewUser) => {
-      this.setState({username:'', password: '', email: '', job: '', description: '', localities: '', spain: false })
+
+      this.setState({username:'', password: '', email: '', job: '', description: '', localities: '', spain: false, imageUrl: '' })
       this.props.setUser(theNewUser)
       this.props.history.push('/professional/profile')
     
     })
-    .catch((err) => console.log('error al mandar la info de registro al back', err))
+    .catch((err) => console.log('error al mandar la info de registro al back', {err}))
+  }
+
+
+  handleFileUpload = e => {
+
+    const uploadData = new FormData();
+    uploadData.append("imageUrl", e.target.files[0]);
+
+    this.authServices.handleUpload(uploadData)
+        .then(response => {
+          this.setState({ imageUrl: response.data.secure_url })
+        })
+        .catch(err => console.log(err))
   }
 
 
@@ -47,8 +63,11 @@ class ProfSignup extends Component {
                     <label htmlFor="input-email">Email:</label>
                     <input type="text" name="email" id="input-email" value={this.state.email} onChange={this.handleChangeInput}></input>
                     
+                    <label htmlFor="input-password">Contraseña:</label>
+                    <input type="password" name="password" id="input-password" value={this.state.password} onChange={this.handleChangeInput}></input>
+                    
                     <p>¿Qué trabajo realizas?:</p>
-                    <select name="job" id="input-job" selected={this.state.job} onChange={this.handleChangeInput}>
+                    <select name="job" id="input-job" selected={this.state.job} onChange={this.handleChangeInput} >
                         <option value='albañilería'>albañilería</option>
                         <option value='animador sociocultural'>animador sociocultural</option>
                         <option value='catering'>catering</option>
@@ -130,10 +149,10 @@ class ProfSignup extends Component {
                       <input type="checkbox" name="spain" id="spain-yes" checked={this.state.spain} onChange={this.handleChangeInput} ></input>
                       Si, sin problema
                     </label>
+              
+                    <label htmlFor="input-img">Por último, añade una foto de perfil</label>
+                    <input name="imageUrl" type="file" id="input-img" onChange={this.handleFileUpload} />
                      
-                    <label htmlFor="input-password">Contraseña:</label>
-                    <input type="password" name="password" id="input-password" value={this.state.password} onChange={this.handleChangeInput}></input>
-                    
                     <button className="submit-btn" type="submit">Enviar</button>
                 </form>
 

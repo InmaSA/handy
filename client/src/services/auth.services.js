@@ -12,15 +12,14 @@ export default class AuthServices {
     signupPart = (username, email,phoneNumber, password) => this.service.post('particular/signup', {username, email, phoneNumber, password})
     loginPart = (username, password) => this.service.post('particular/login', {username, password})
   
-    signupProf = (username, email, password, job, description, localities, spain) => this.service.post('professional/signup', {username, email, password, job, description, localities, spain})
+    signupProf = (formData) => {
+      const {username, email, password, job, description, localities, spain, imageUrl} = formData
+      return this.service.post('professional/signup', {username, email, password, job, description, localities, spain, imageUrl}
+      )}
     loginProf = (username, password) => this.service.post('professional/login', {username, password})
  
-
-    // confirmCodePart = (confirmationCode) => {
-    //   return this.service.post('/particular/confirm/:confirmationCode', {confirmationCode})
-    //   .then(response => response.data)
-    // }
-
+    handleUpload = theFile => this.service.post('/upload', theFile)
+  
 
     logout = () => {
       console.log("service de logout")

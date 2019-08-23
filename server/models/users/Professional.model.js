@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 const professionalSchema = new Schema({
   username: {type: String, require:true},
   email:    {type: String, require: true},
+  imageUrl: { type: String, required: true },
   password: {type: String, require: true},
   job:     {type: String, require: true},
   description: {type: String, require: true},
