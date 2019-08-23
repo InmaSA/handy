@@ -3,6 +3,7 @@ import Calendar from 'react-calendar'
 
 import EventsServices from '../services/events.services'
 
+import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
 
@@ -77,6 +78,10 @@ class CalendarComp extends Component {
 
         <Modal show={this.state.showModal} onHide={this.handleModalClose}>
 
+            <Modal.Header closeButton>
+                <Modal.Title>Inidica qué día sería o empezaría el trabajo:</Modal.Title>
+            </Modal.Header>
+
             <Modal.Body>
                 <form onSubmit={this.handleFormSubmit}>
                     <label htmlFor="input-event"></label>
@@ -84,6 +89,10 @@ class CalendarComp extends Component {
                     <button type="submit" onClick={this.handleModalClose}>Crear cita</button>
                 </form>
             </Modal.Body>
+
+            <Modal.Footer>
+                <Button onClick={this.handleModalClose}>Cerrar</Button>
+            </Modal.Footer>
 
         </Modal>
       </>

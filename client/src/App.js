@@ -13,9 +13,11 @@ import PartLogin from './components/particular.components/PartLogin'
 import NavBarPart from './components/particular.components/Navbar.Part'
 import PartHomePage from './components/particular.components/PartHomePage'
 import ParticularCard from './components/particular.components/ParticularCard'
+import MyFavourites from './components/particular.components/myFavourites'
 
 import ProfSignup from './components/professional.components/ProfSignup'
 import ProfLogin from './components/professional.components/ProfLogin'
+import NavBarProf from './components/professional.components/Navbar.Prof'
 import ProfHomePage from './components/professional.components/ProfHomePage'
 import Agenda from './components/professional.components/Agenda'
 
@@ -59,7 +61,7 @@ class App extends Component {
     if (this.state.loggedInUser && this.state.loggedInUser.data.role === 'PROF') {
       return (
         <>
-            {/* <NavBar setUser={this.setTheUser} userInSession={this.state.loggedInUser} /> */}
+            <NavBarProf  setUser={this.setTheUser} userInSession={this.state.loggedInUser} />
 
             <Switch>
                 <Route path="/" exact render={() => <Home setUser={this.setTheUser}></Home>} />
@@ -78,6 +80,7 @@ class App extends Component {
                   <Route path="/" exact render={() => <Home setUser={this.setTheUser}></Home>} />
                     {/* <Route path="/logout" component={Home}/>  */}
                     <Route path='/search/:job' render={match => <ParticularCard {...match} user={this.state.loggedInUser} />} />
+                    <Route path='/favourites' user={this.state.loggedInUser} component={MyFavourites}/>
                     <Route path='/postEvents' />
                     <Route path='getProfEvents/:profId' render={match => <Agenda {...match}/>} />
                     <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={PartHomePage} />   

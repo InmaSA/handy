@@ -13,8 +13,8 @@ export default class AuthServices {
     loginPart = (username, password) => this.service.post('particular/login', {username, password})
   
     signupProf = (formData) => {
-      const {username, email, password, job, description, localities, spain, imageUrl} = formData
-      return this.service.post('professional/signup', {username, email, password, job, description, localities, spain, imageUrl}
+      const {username, email, password, job, description, localities, imageUrl} = formData
+      return this.service.post('professional/signup', {username, email, password, job, description, localities, imageUrl}
       )}
     loginProf = (username, password) => this.service.post('professional/login', {username, password})
  

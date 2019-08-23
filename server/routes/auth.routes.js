@@ -97,7 +97,7 @@ authRoutes.post('/particular/login', (req, res, next) => {
 
 authRoutes.post('/professional/signup', (req, res, next) => {
 
-    const { username, email, password, job, description, localities, spain, imageUrl } = req.body
+    const { username, email, password, job, description, localities, imageUrl } = req.body
   
     if (!username || !password) {
       res.status(400).json({ message: 'Por favor, introduce tu email y una contraseña' })
@@ -131,7 +131,7 @@ authRoutes.post('/professional/signup', (req, res, next) => {
             job: job,
             description: description,
             localities: localities,
-            spain: spain,
+            // spain: spain,
             imageUrl: imageUrl
         });
 
@@ -139,6 +139,7 @@ authRoutes.post('/professional/signup', (req, res, next) => {
   
         NewPart.save(err => {
             if (err) {
+                console.log(err)
                 res.status(400).json({ message: 'Algo no ha ido bien al guardar tus datos en nuestra base de datos, por favor inténtalo de nuevo' })
                 return
             }

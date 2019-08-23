@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
 import Agenda from './Agenda'
-
 import AuthServices from '../../services/auth.services'
 import EventsServices from '../../services/events.services'
 
@@ -38,21 +37,15 @@ class ProfHomePage extends Component {
     return(
       <>
         <header>
-            <h2>Home page de un profesional</h2>
-            <nav>
-                <ul>
-                    <li><small>Bienvenid@, {this.props.loggedInUser.data.username}</small></li>
-                    <li><Link to="#">Mis favoritos</Link></li>
-                    <li><Link to="#">Editar perfil</Link></li>
-                    <button onClick={this.handleModalOpen}>Mi agenda</button>
-                    <button onClick={() => this.logout()}>logout</button>
-                </ul>
-            </nav>
+            <h2>Hola de nuevo {this.props.loggedInUser.data.username}</h2>
+
+            <Link to="#" onClick={this.handleModalOpen}><img src="../../../images/event.png"></img></Link>
+
         </header>
 
         <Modal show={this.state.showModal} onHide={this.handleModalClose}>
 
-            <Modal.Header>
+            <Modal.Header closeButton>
                 <Modal.Title>Mi agenda</Modal.Title>
             </Modal.Header>
 
@@ -61,7 +54,7 @@ class ProfHomePage extends Component {
             </Modal.Body>
 
             <Modal.Footer>
-                <Button variant="secondary" onClick={this.handleModalClose}>Cerrar</Button>
+                <Button onClick={this.handleModalClose}>Cerrar</Button>
             </Modal.Footer>
 
         </Modal>

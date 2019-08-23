@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
 
-class ParticularCard extends Component {
+class MyFavourites extends Component {
   
   constructor(props){
     super(props)
@@ -79,4 +79,4 @@ class ParticularCard extends Component {
   }
 }
 
-export default ParticularCard
+export default MyFavourites

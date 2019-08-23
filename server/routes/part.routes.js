@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const Professional  = require('../models/users/Professional.model')
+const Particular    = require('../models/users/Particular.model')
 
 
 router.get('/search/:job', (req, res) => {
@@ -61,6 +62,10 @@ router.get('/search/:job', (req, res) => {
 })
 
 
+// router.get('/favourites', req, res => {
+
+//   Particular
+// })
 
 
 module.exports = router

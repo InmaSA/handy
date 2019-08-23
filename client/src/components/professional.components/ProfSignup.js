@@ -4,7 +4,7 @@ import AuthServices from '../../services/auth.services'
 class ProfSignup extends Component {
   constructor(props){
     super(props);
-    this.state = { username: '', password: '', email: '', job: 'albañilería', description: '', localities: 'Albacete', spain: '', imageUrl: '' }
+    this.state = { username: '', password: '', email: '', job: '', description: '', localities: '', imageUrl: '' }
     this.authServices = new AuthServices()
   }
 
@@ -12,9 +12,9 @@ class ProfSignup extends Component {
 
     let {name, value} = e.target
 
-    if (name === 'spain') {
-      value = e.target.checked
-    } 
+    // if (name === 'spain') {
+    //   value = e.target.checked
+    // } 
     
     this.setState({ [name]: value })
   }
@@ -23,12 +23,12 @@ class ProfSignup extends Component {
   handleFormSubmit = e => {
     e.preventDefault()
 
-    const {username, email, password, job, description, localities, spain, imageUrl} = this.state
+    const {username, email, password, job, description, localities, imageUrl} = this.state
 
-    this.authServices.signupProf({username, email, password, job, description, localities, spain, imageUrl})
+    this.authServices.signupProf({username, email, password, job, description, localities, imageUrl})
     .then((theNewUser) => {
 
-      this.setState({username:'', password: '', email: '', job: '', description: '', localities: '', spain: false, imageUrl: '' })
+      this.setState({username:'', password: '', email: '', job: '', description: '', localities: '', imageUrl: '' })
       this.props.setUser(theNewUser)
       this.props.history.push('/professional/profile')
     
@@ -68,6 +68,7 @@ class ProfSignup extends Component {
                     
                     <p>¿Qué trabajo realizas?:</p>
                     <select name="job" id="input-job" selected={this.state.job} onChange={this.handleChangeInput} >
+                        <option>selecciona</option>
                         <option value='albañilería'>albañilería</option>
                         <option value='animador sociocultural'>animador sociocultural</option>
                         <option value='catering'>catering</option>
@@ -95,6 +96,7 @@ class ProfSignup extends Component {
 
                     <p>Selecciona una provincia:</p>
                     <select name="localities" id="input-localities" selected={this.state.localities} onChange={this.handleChangeInput}>
+                        <option>selecciona</option>
                         <option value='Albacete'>Albacete</option>
                         <option value='Alicante/Alacant'>Alicante/Alacant</option>
                         <option value='Almería'>Almería</option>
@@ -144,11 +146,11 @@ class ProfSignup extends Component {
                         <option value='Zaragoza'>	Zaragoza</option>
                     </select>
                     
-                    <p>¿Trabajarías en toda la península?:</p>
+                    {/* <p>¿Trabajarías en toda la península?:</p>
                     <label htmlFor="spain-yes">
                       <input type="checkbox" name="spain" id="spain-yes" checked={this.state.spain} onChange={this.handleChangeInput} ></input>
                       Si, sin problema
-                    </label>
+                    </label> */}
               
                     <label htmlFor="input-img">Por último, añade una foto de perfil</label>
                     <input name="imageUrl" type="file" id="input-img" onChange={this.handleFileUpload} />

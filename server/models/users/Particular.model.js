@@ -6,6 +6,7 @@ const particularSchema = new Schema({
   email:    {type: String, require: true},
   password: {type: String, require: true},
   phoneNumber: {type: Number, require: true},
+  favourites: {type: Array},
   role: {
     type: String,
     enum: ['PART', 'ADMIN'],

@@ -5,18 +5,18 @@ import AuthServices from '../../services/auth.services'
 
 import { Navbar, Nav } from 'react-bootstrap'
 
+
 class NavBarPart extends Component {
 
   constructor(props) {
       super(props)
       this.state = {
-        navExpanded: false
+        navExpanded: false,
       }
       this.authServices = new AuthServices()
   }
 
   setNavExpanded = (expanded) => this.setState({ navExpanded: expanded })
-
   closeNav= () => this.setState({ navExpanded: false })
 
 
@@ -30,13 +30,14 @@ class NavBarPart extends Component {
 
 
   render() {
+    console.log(this.props.match)
     return(
-
+      <>
         <Navbar bg="light" variant="light"
                 onToggle={this.setNavExpanded}
                 expanded={this.state.navExpanded}>
 
-            <Navbar.Toggle/>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
             <Navbar.Collapse>
                 <Nav className="mr-auto" onSelect={this.closeNav}>
@@ -46,15 +47,14 @@ class NavBarPart extends Component {
                         border-radius="25%"
                         alt="icono de Handy">
                     </img></Link></Nav.Link>
-
-                    <Nav.Link as="div"><Link to="/particular/profile">Volver a tu perfil</Link></Nav.Link> 
-                    <Nav.Link as="div"><Link to="/favourites">Mis favoritos</Link></Nav.Link>
-                    <Nav.Link as="div"><Link to="#">Editar perfil</Link></Nav.Link>
+                   
+                    <Nav.Link as="div"><Link to="/professional/profile">Volver a tu perfil</Link></Nav.Link>   
+                    <Nav.Link as="div"><Link to="#">Editar mis datos</Link></Nav.Link>
                     <Nav.Link as="div" to="/" onClick={this.logout}>Cerrar sesión</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
-
+      </>
     )
   }
 }  

@@ -34,6 +34,7 @@ class Agenda extends Component {
             <p>{elm.particularName}</p>   
             <p>{elm.particularPhone}</p>
             <p>{elm.event}</p>
+            <hr></hr>
           </div> 
           )
         })
