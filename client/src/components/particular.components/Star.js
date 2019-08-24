@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 
 import PartServices from '../../services/part.services'
 
+// import {OverlayTrigger, Tooltip} from 'react-bootstrap'
+
 class Star extends Component {
 
   constructor (props) {
@@ -35,12 +37,26 @@ class Star extends Component {
       this.setState({wichStar: '../../../images/fullStar.svg' })
       this.partServices.updateFavourites(this.props.part._id, this.props.prof)
     }
+    this.props.showToast()
   }
 
   render() {
 
       return (
-        <img onClick={this.toggleStars} width="20%" src={this.state.wichStar} alt="star"></img>
+        
+          // <OverlayTrigger 
+          //   placement='bottom'
+          //   overlay={
+          //       <Tooltip id='tooltip-top'>
+          //       Gestiona tus <strong>favoritos</strong>.
+          //       </Tooltip>
+          //   }
+          // >
+                          
+            <img onClick={this.toggleStars} width="20%" src={this.state.wichStar} alt="star"></img>
+                            
+// {/*                           
+//           </OverlayTrigger> */}
       )
 
  

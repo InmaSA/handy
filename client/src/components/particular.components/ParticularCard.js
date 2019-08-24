@@ -36,7 +36,7 @@ class ParticularCard extends Component {
 
           <div className="row justify-content-around">
            
-            <Card openModal={this.handleModalOpen} professionals={this.state.professionals} part={this.props.user.data}/>
+            <Card openModal={this.handleModalOpen} closeModal={this.handleModalClose} professionals={this.state.professionals} part={this.props.user.data}/>
 
 
             <Modal show={this.state.showModal} onHide={this.handleModalClose}>
