@@ -79,19 +79,19 @@ class CalendarComp extends Component {
         <Modal show={this.state.showModal} onHide={this.handleModalClose}>
 
             <Modal.Header closeButton>
-                <Modal.Title>Inidica qué día sería o empezaría el trabajo:</Modal.Title>
+                <Modal.Title>Describe brevemente qué necesitas:</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
                 <form onSubmit={this.handleFormSubmit}>
                     <label htmlFor="input-event"></label>
-                    <input type="text" name="event" id="input-event" value={this.state.event} onChange={this.handleChangeInput}></input>
+                    <input type="textarea" name="event" id="input-event" value={this.state.event} onChange={this.handleChangeInput}></input>
                     <button type="submit" onClick={this.handleModalClose}>Crear cita</button>
                 </form>
             </Modal.Body>
 
             <Modal.Footer>
-                <Button onClick={this.handleModalClose}>Cerrar</Button>
+                <p>Enviaremos una notificación por email con tus datos a este profesional para que contacte conigo en el menor plazo posible.</p>
             </Modal.Footer>
 
         </Modal>
