@@ -4,7 +4,6 @@ import Card from './Card'
 import PartServices from '../../services/part.services'
 import CalendarComp from '../CalendarComp'
 
-import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
 
@@ -37,7 +36,7 @@ class ParticularCard extends Component {
 
           <div className="row justify-content-around">
            
-            <Card openModal={this.handleModalOpen} professionals={this.state.professionals}/>
+            <Card openModal={this.handleModalOpen} professionals={this.state.professionals} part={this.props.user.data}/>
 
 
             <Modal show={this.state.showModal} onHide={this.handleModalClose}>
@@ -47,7 +46,7 @@ class ParticularCard extends Component {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <CalendarComp profId={this.state.professionalId} part={this.props.user.data}closeModal={this.handleModalClose} ></CalendarComp>
+                    <CalendarComp profId={this.state.professionalId} part={this.props.user.data} closeModal={this.handleModalClose} ></CalendarComp>
                 </Modal.Body>
 
                 <Modal.Footer>

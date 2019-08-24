@@ -62,10 +62,19 @@ router.get('/search/:job', (req, res) => {
 })
 
 
-// router.get('/favourites', req, res => {
+router.get('/update-favourites/part/:partId/prof/:profId', (req, res) => {
 
-//   Particular
-// })
+  Particular.findByIdAndUpdate(req.params.partId, { $push: { favourites: req.params.profId } }, { new: true })
+  .then(theParticular => console.log(theParticular))
+  .catch(error => console.log(error))
+})
 
+
+router.get('/remove-favourites/part/:partId/prof/:profId', (req, res) => {
+
+  Particular.findByIdAndUpdate(req.params.partId, { $pull: { favourites: req.params.profId } }, { new: true })
+  .then(theParticular => console.log(theParticular))
+  .catch(error => console.log(error))
+})
 
 module.exports = router

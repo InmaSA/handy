@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 
+import Star from './Star'
+
 class Card extends Component  {
   constructor (props) {
     super(props)
@@ -20,6 +22,7 @@ class Card extends Component  {
 
                       <div className="col-sm-4">
                           <img width="100%" src={prof.imageUrl} alt={prof.username}></img>
+                          <Star prof={prof._id} part={this.props.part}></Star>
                       </div>
 
                       <div className="col-sm-6">

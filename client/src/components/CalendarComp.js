@@ -3,7 +3,6 @@ import Calendar from 'react-calendar'
 
 import EventsServices from '../services/events.services'
 
-import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
 
