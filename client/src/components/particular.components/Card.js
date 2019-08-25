@@ -22,7 +22,7 @@ class Card extends Component  {
       <>
         <Toast onClose={this.handleToastClose} show={this.state.showToast} delay={3000} autohide style={{ position: 'fixed', top: 10, right: 10, zIndex: 9999 }}>
             <Toast.Header>
-                <strong className="mr-auto">Listo!</strong>
+                <strong className="mr-auto">¡Listo!</strong>
             </Toast.Header>
             <Toast.Body>Acaban de actualizarse tus favoritos</Toast.Body>
         </Toast>

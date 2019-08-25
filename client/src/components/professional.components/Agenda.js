@@ -27,7 +27,7 @@ class Agenda extends Component {
     return (
       <>
       {
-        this.state.events.map(elm => {
+        this.state.events.reverse().map(elm => {
           return (
             <div key={elm._id}>
             <h5>{elm.date}</h5>

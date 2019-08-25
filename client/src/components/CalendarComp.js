@@ -1,9 +1,17 @@
 import React, {Component} from 'react'
 import Calendar from 'react-calendar'
+import moment from 'moment'
+import 'moment-timezone'
 
 import EventsServices from '../services/events.services'
 
 import Modal from 'react-bootstrap/Modal'
+
+const jun = moment("2014-06-01T12:00:00Z")
+const dec = moment("2014-12-01T12:00:00Z")
+
+jun.tz('Europe/Madrid').format('ha z')
+dec.tz('Europe/Madrid').format('ha z')
 
 
 class CalendarComp extends Component {
@@ -85,7 +93,7 @@ class CalendarComp extends Component {
                 <form onSubmit={this.handleFormSubmit}>
                     <label htmlFor="input-event"></label>
                     <input type="textarea" name="event" id="input-event" value={this.state.event} onChange={this.handleChangeInput}></input>
-                    <button type="submit" onClick={this.handleModalClose}>Crear cita</button>
+                    <button type="submit" onClick={this.handleModalClose}>Enviar</button>
                 </form>
             </Modal.Body>
 
