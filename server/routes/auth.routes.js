@@ -131,7 +131,6 @@ authRoutes.post('/professional/signup', (req, res, next) => {
             job: job,
             description: description,
             localities: localities,
-            // spain: spain,
             imageUrl: imageUrl
         });
 

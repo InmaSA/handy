@@ -4,17 +4,13 @@ import AuthServices from '../../services/auth.services'
 class ProfSignup extends Component {
   constructor(props){
     super(props);
-    this.state = { username: '', password: '', email: '', job: '', description: '', localities: '', imageUrl: '' }
+    this.state = { username: '', password: '', email: '', job: '', description: '', localities: '', imageUrl: 'https://res.cloudinary.com/dfevkaska/image/upload/v1566726933/handy/default-user.png.png' }
     this.authServices = new AuthServices()
   }
 
   handleChangeInput = e => {
 
     let {name, value} = e.target
-
-    // if (name === 'spain') {
-    //   value = e.target.checked
-    // } 
     
     this.setState({ [name]: value })
   }
@@ -28,7 +24,7 @@ class ProfSignup extends Component {
     this.authServices.signupProf({username, email, password, job, description, localities, imageUrl})
     .then((theNewUser) => {
 
-      this.setState({username:'', password: '', email: '', job: '', description: '', localities: '', imageUrl: '' })
+      this.setState({username:'', password: '', email: '', job: '', description: '', localities: '', imageUrl: 'https://res.cloudinary.com/dfevkaska/image/upload/v1566726933/handy/default-user.png.png' })
       this.props.setUser(theNewUser)
       this.props.history.push('/professional/profile')
     
@@ -145,12 +141,6 @@ class ProfSignup extends Component {
                         <option value='Zamora'>Zamora</option>
                         <option value='Zaragoza'>	Zaragoza</option>
                     </select>
-                    
-                    {/* <p>¿Trabajarías en toda la península?:</p>
-                    <label htmlFor="spain-yes">
-                      <input type="checkbox" name="spain" id="spain-yes" checked={this.state.spain} onChange={this.handleChangeInput} ></input>
-                      Si, sin problema
-                    </label> */}
               
                     <label htmlFor="input-img">Por último, añade una foto de perfil</label>
                     <input name="imageUrl" type="file" id="input-img" onChange={this.handleFileUpload} />

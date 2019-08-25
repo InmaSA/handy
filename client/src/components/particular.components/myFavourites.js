@@ -35,6 +35,7 @@ class MyFavourites extends Component {
 
   render() {
     console.log(this.props.user.data)
+    console.log(this.state.professionalsIds)
  
     if(this.state.professionalsIds !== []) {
       

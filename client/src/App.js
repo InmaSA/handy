@@ -19,6 +19,7 @@ import ProfSignup from './components/professional.components/ProfSignup'
 import ProfLogin from './components/professional.components/ProfLogin'
 import NavBarProf from './components/professional.components/Navbar.Prof'
 import ProfHomePage from './components/professional.components/ProfHomePage'
+import ProfEdit from './components/professional.components/ProfEdit'
 import Agenda from './components/professional.components/Agenda'
 
 
@@ -65,6 +66,7 @@ class App extends Component {
 
             <Switch>
                 <Route path="/" exact render={() => <Home setUser={this.setTheUser}></Home>} />
+                <Route path="/edit-professional-profile" exact render={() => <ProfEdit userInSession={this.state.loggedInUser} />}/>
                 {/* <Route path="/logout" component={Home}/>     */}
                 <ProtectedRoute path='/professional/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={ProfHomePage} />   
             </Switch>

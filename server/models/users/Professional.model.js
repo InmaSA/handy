@@ -9,7 +9,6 @@ const professionalSchema = new Schema({
   job:     {type: String, require: true},
   description: {type: String, require: true},
   localities: {type: String, require: true},
-  // spain: {type: Boolean, require: true},
   role: {
     type: String,
     enum: ['PROF', 'ADMIN'],
