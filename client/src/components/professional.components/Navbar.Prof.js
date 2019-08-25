@@ -50,7 +50,7 @@ class NavBarPart extends Component {
                    
                     <Nav.Link as="div"><Link to="/professional/profile">Volver a tu perfil</Link></Nav.Link>   
                     <Nav.Link as="div"><Link to="#">Editar mis datos</Link></Nav.Link>
-                    <Nav.Link as="div" to="/" onClick={this.logout}>Cerrar sesión</Nav.Link>
+                    <Nav.Link as="div"><Link to="/" onClick={this.logout}>Cerrar sesión</Link></Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

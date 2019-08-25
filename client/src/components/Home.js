@@ -5,10 +5,10 @@ import AuthServices from '../services/auth.services'
 
 class Home extends Component {
 
-  constructor (){
+  constructor () {
     super()
     this.state = {}
-    this.authServices = new AuthServices
+    this.authServices = new AuthServices()
   }
 
   render () {

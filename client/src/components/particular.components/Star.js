@@ -16,11 +16,12 @@ class Star extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.prof)
     this.wichOne()
   }
 
   wichOne() {
-    
+    console.log(this.props.prof)
     if (this.props.part.favourites.includes(this.props.prof)) {
       this.setState({wichStar: '../../../images/fullStar.svg' })
     }  else {
@@ -41,7 +42,7 @@ class Star extends Component {
   }
 
   render() {
-
+    
       return (
         
           // <OverlayTrigger 
@@ -55,8 +56,7 @@ class Star extends Component {
                           
             <img onClick={this.toggleStars} width="20%" src={this.state.wichStar} alt="star"></img>
                             
-// {/*                           
-//           </OverlayTrigger> */}
+          // </OverlayTrigger>
       )
 
  

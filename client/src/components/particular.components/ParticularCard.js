@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 
 import Card from './Card'
+
+import Modal from 'react-bootstrap/Modal'
+
 import PartServices from '../../services/part.services'
 import CalendarComp from '../CalendarComp'
 
-import Modal from 'react-bootstrap/Modal'
 
 
 class ParticularCard extends Component {
@@ -21,9 +23,9 @@ class ParticularCard extends Component {
 
   componentDidMount() {
     this.partServices.getProfessionals(this.props.match.params.job)
-        .then(response => { this.setState({ professionals: response.data })
-        })
+        .then(response => this.setState({ professionals: response.data }))
         .catch(err => console.log('err', err))
+        
   }
 
   handleModalOpen = (e) => this.setState({ showModal: true, professionalId: e.target.value })

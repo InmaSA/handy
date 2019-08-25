@@ -65,7 +65,7 @@ router.get('/search/:job', (req, res) => {
 router.get('/update-favourites/part/:partId/prof/:profId', (req, res) => {
 
   Particular.findByIdAndUpdate(req.params.partId, { $push: { favourites: req.params.profId } }, { new: true })
-  .then(theParticular => console.log(theParticular))
+  .then(theParticular => res.json(theParticular))
   .catch(error => console.log(error))
 })
 
@@ -73,8 +73,24 @@ router.get('/update-favourites/part/:partId/prof/:profId', (req, res) => {
 router.get('/remove-favourites/part/:partId/prof/:profId', (req, res) => {
 
   Particular.findByIdAndUpdate(req.params.partId, { $pull: { favourites: req.params.profId } }, { new: true })
-  .then(theParticular => console.log(theParticular))
+  .then(theParticular => res.json(theParticular))
   .catch(error => console.log(error))
 })
+
+
+router.get('/my-favourites/:partId', (req, res) => {
+
+  Particular.findById(req.params.partId)
+  .then(theParticular => res.json(theParticular))
+  .catch(error => console.log(error))
+})
+
+router.get('/getOneProfessional/:id', (req, res) => {
+  Professional.findById(req.params.id)
+  .then(theProf => res.json(theProf))
+  .catch(error => console.log(error))
+
+}) 
+
 
 module.exports = router

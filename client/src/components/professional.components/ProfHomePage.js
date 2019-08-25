@@ -39,7 +39,7 @@ class ProfHomePage extends Component {
         <header>
             <h2>Hola de nuevo {this.props.loggedInUser.data.username}</h2>
 
-            <Link to="#" onClick={this.handleModalOpen}><img src="../../../images/event.png"></img></Link>
+            <Link to="#" onClick={this.handleModalOpen}><img src="../../../images/event.png" alt="events"></img></Link>
 
         </header>
 
