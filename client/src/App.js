@@ -67,7 +67,7 @@ class App extends Component {
             <Switch>
                 <Route path="/" exact render={() => <Home setUser={this.setTheUser}></Home>} />
                 <Route path="/edit-professional-profile" exact render={() => <ProfEdit userInSession={this.state.loggedInUser} />}/>
-                {/* <Route path="/logout" component={Home}/>     */}
+                <Route path="/deleteProfessional/:id" component={Home}/>
                 <ProtectedRoute path='/professional/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={ProfHomePage} />   
             </Switch>
         </>

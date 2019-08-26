@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import {Toast} from 'react-bootstrap'
 
 import Star from './Star'
+import ProfRating from './ProfRating'
 
 class Card extends Component  {
   constructor (props) {
@@ -39,7 +40,8 @@ class Card extends Component  {
                           <img width="100%" src={prof.imageUrl} alt={prof.username}></img>
                       
                              <Star showToast={this.handleToastOpen} prof={prof._id} part={this.props.part}></Star>
-                     
+
+                             <ProfRating prof={prof._id} rating={prof.rating}/> 
                       </div>
 
                       <div className="col-sm-6">

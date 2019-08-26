@@ -28,7 +28,9 @@ router.post('/edit-professional-profile/:id', (req, res) => {
     }}, 
     { new: true })
 
-  .then(theProfessional => res.json(theProfessional))
+  .then(theProfessional => {
+    console.log(theProfessional)
+    res.json(theProfessional)})
   .catch(error => console.log(error))
 })
 
@@ -38,5 +40,17 @@ router.get('/deleteProfessional/:id', (req, res) => {
   .then(() => console.log('eliminado de la base de datos'))
   .catch(error => console.log(error))
 })
+
+
+router.post('/rateProfessional/id/:id/value/:value', (req, res) => {
+  Professional.findByIdAndUpdate(req.params.id, { $push: { rating: req.params.value } }, { new: true })
+  .then(theProfessional => { 
+    console.log(theProfessional)
+    res.json(theProfessional)
+  })
+  .catch(error => console.log(error))
+})
+
+
 
 module.exports = router

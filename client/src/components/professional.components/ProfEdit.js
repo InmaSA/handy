@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import { Link } from 'react-router-dom'
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap'
 
 import AuthServices from '../../services/auth.services'
@@ -57,19 +58,22 @@ class ProfEdit extends Component {
     e.preventDefault()
 
     const id = this.props.userInSession.data._id
-
     const {username, email, job, description, localities, imageUrl} = this.state
 
-
     this.profServices.updateProfessional(id, username, email, job, description, localities, imageUrl)
-    .then(() => {
+    .then((theProf) => {
 
-      this.setState({username:'', email: '', job: '', description: '', localities: '', imageUrl: 'https://res.cloudinary.com/dfevkaska/image/upload/v1566726933/handy/default-user.png.png' })
-      // this.props.setUser(theUser)
-      // this.props.history.push('/professional/profile')
+      this.setState(
+        {username:'', email: '', job: '', description: '', localities: '', imageUrl: 'https://res.cloudinary.com/dfevkaska/image/upload/v1566726933/handy/default-user.png.png',
+        actualUsername: theProf.data.username,
+        actualEmail: theProf.data.email,
+        actualJob: theProf.data.job,
+        actualDescription: theProf.data.description,
+        actualLocalities: theProf.data.localities,
+        actualImageUrl: theProf.data.imageUrl})
     
     })
-    .catch((err) => console.log('error al mandar tus datos actualizados a la base de datos', {err}))
+    .catch((err) => console.log('error al mandar tus datos actualizados a la base de datos', err.response.data.message))
   }
 
 
@@ -86,15 +90,12 @@ class ProfEdit extends Component {
   }
 
 
-  deleteProf() {
+  deleteProf = () => {
 
     const id = this.props.userInSession.data._id
 
     this.profServices.deleteProfessional(id)
-    .then(() => {
-      console.log('allá voy')
-      this.props.history.push('/')
-    })
+    .then(() => this.props.history.push('/'))
     .catch(err => console.log(err))
   }
 
@@ -224,7 +225,7 @@ class ProfEdit extends Component {
                   <button className="submit-btn" type="submit">Actualizar</button>
                   
                   <footer>
-                    <small onClick={this.deleteProf}>Darse de baja</small>
+                    <Link as="div" to="/"><small onClick={this.deleteProf}>Darse de baja</small></Link>
                   </footer>
               </form>
           </div>

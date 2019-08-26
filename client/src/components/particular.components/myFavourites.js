@@ -37,18 +37,17 @@ class MyFavourites extends Component {
     console.log(this.props.user.data)
     console.log(this.state.professionalsIds)
  
-    if(this.state.professionalsIds !== []) {
-      
-      return (
-        <>
+
+    return this.state.professionalsIds.length>=1 ? 
+      <>
+        <div className="container"> 
+  
         {
           this.state.professionalsIds.map((elm) => {
             return (
-              <div className="container"> 
-  
-              <div className="row justify-content-around">
+              <div key={elm} className="row justify-content-around">
                
-                <FCard key={elm} openModal={this.handleModalOpen} closeModal={this.handleModalClose} part={this.props.user.data} prof={elm}/>
+                <FCard  openModal={this.handleModalOpen} closeModal={this.handleModalClose} part={this.props.user.data} prof={elm}/>
     
     
                 <Modal show={this.state.showModal} onHide={this.handleModalClose}>
@@ -68,22 +67,21 @@ class MyFavourites extends Component {
                 </Modal>
     
               </div>
-          </div> 
-            )
-          })
-        }
-        </>
-      )
-    } else {
-      console.log('hey')
-      return (
+          )
+        })
+      }
+      </div> 
+    </>
+      
+  : 
+     (
         <div className="container">
 
           <h2>Aún no has añadido profesionales a tus favoritos</h2>
 
         </div>
       )
-    }
+    
   }
 }
 

@@ -16,27 +16,27 @@ class Star extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.part.favourites)
     console.log(this.props.prof)
     this.wichOne()
   }
 
   wichOne() {
-    console.log(this.props.prof)
-    if (this.props.part.favourites.includes(this.props.prof)) {
+    this.props.part.favourites && this.props.part.favourites.includes(this.props.prof) ? 
       this.setState({wichStar: '../../../images/fullStar.svg' })
-    }  else {
+   :
       this.setState({wichStar: '../../../images/emptyStar.svg' })
-    }
+    
   }
 
   toggleStars = () => {
 
     if (this.props.part.favourites.includes(this.props.prof)) {
-      this.setState({wichStar: '../../../images/emptyStar.svg' })
       this.partServices.removeFavourites(this.props.part._id, this.props.prof)
+      this.setState({wichStar: '../../../images/emptyStar.svg' })
     } else {
-      this.setState({wichStar: '../../../images/fullStar.svg' })
       this.partServices.updateFavourites(this.props.part._id, this.props.prof)
+      this.setState({wichStar: '../../../images/fullStar.svg' })
     }
     this.props.showToast()
   }
@@ -54,7 +54,7 @@ class Star extends Component {
           //   }
           // >
                           
-            <img onClick={this.toggleStars} width="20%" src={this.state.wichStar} alt="star"></img>
+          this.state.wichStar && <img onClick={this.toggleStars} width="20%" src={this.state.wichStar} alt="star"></img>
                             
           // </OverlayTrigger>
       )

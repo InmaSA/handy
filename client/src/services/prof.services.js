@@ -13,10 +13,13 @@ export default class ProfServices {
 
   
   updateProfessional = (id, username, email, job, description, localities, imageUrl) => {
-    this.service.post(`edit-professional-profile/${id}`, {username, email, job, description, localities, imageUrl})
+    return this.service.post(`edit-professional-profile/${id}`, {username, email, job, description, localities, imageUrl})
   }  
 
   deleteProfessional = id => this.service.get(`deleteProfessional/${id}`)
   
+  rateProfessional = (id,value) => {
+  return   this.service.post(`rateProfessional/id/${id}/value/${value}`)
+  }
   
 }  

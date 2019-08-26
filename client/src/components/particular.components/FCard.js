@@ -30,7 +30,7 @@ class FCard extends Component  {
 
 
   render() {
-    console.log(this.state.prof._id)
+
     return(
       <>
         <Toast onClose={this.handleToastClose} show={this.state.showToast} delay={3000} autohide style={{ position: 'fixed', top: 10, right: 10, zIndex: 9999 }}>
@@ -48,7 +48,7 @@ class FCard extends Component  {
               <div className="col-sm-4">
                   <img width="100%" src={this.state.prof.imageUrl} alt={this.state.prof.username}></img>
               
-                      <Star showToast={this.handleToastOpen} prof={this.state.prof._id} part={this.props.part}></Star>
+                      {this.state.prof._id && <Star showToast={this.handleToastOpen} prof={this.state.prof._id} part={this.props.part}></Star>}
               
               </div>
 
