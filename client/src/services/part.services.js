@@ -10,6 +10,7 @@ export default class PartServices {
   }
 
   getProfessionals = job =>  this.service.get(`search/${job}`)
+  getLocalProfessionals = (job, localities) =>  this.service.get(`search/job/${job}/localities/${localities}`)
   getOneProfessional = id => this.service.get(`getOneProfessional/${id}`)
 
   updateFavourites = (partId, profId) =>  this.service.get(`update-favourites/part/${partId}/prof/${profId}`)
