@@ -40,7 +40,7 @@ class Card extends Component  {
                           <img width="100%" src={prof.imageUrl} alt={prof.username}></img>
                       
                              <Star showToast={this.handleToastOpen} prof={prof._id} part={this.props.part}></Star>
-
+                            
                              <ProfRating prof={prof._id} rating={prof.rating}/> 
                       </div>
 

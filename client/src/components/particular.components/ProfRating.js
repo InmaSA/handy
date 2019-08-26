@@ -39,13 +39,15 @@ class ProfRating extends Component {
             <Box component="fieldset" mb={3} borderColor="transparent">
               <Typography component="legend">Valoración:</Typography>
               <Rating 
+                name={this.props.prof}
                 value={0} 
                 size={'small'}
                 precision={1}
                 max={5}
-                onChange={(event, newValue) =>
+                onChange={(event, newValue) => {
+                  event.persist()
                   this.changeRate(newValue)
-                  } 
+                  } }
                 />
             </Box>
         </>
@@ -59,13 +61,15 @@ class ProfRating extends Component {
             <Box component="fieldset" mb={3} borderColor="transparent">
                 <Typography component="legend">Valoración:</Typography>
                 <Rating 
+                  name={this.props.prof}  
                   value={this.calcRate()} 
                   size={'small'}
                   precision={1}
                   max={5}
-                  onChange={(event, newValue) =>
+                  onChange={(event, newValue) => {
+                    event.persist()              
                   this.changeRate(newValue)
-                  } 
+                  } }
                   />
             </Box>
           </>
