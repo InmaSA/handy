@@ -45,7 +45,6 @@ router.get('/deleteProfessional/:id', (req, res) => {
 router.post('/rateProfessional/id/:id/value/:value', (req, res) => {
   Professional.findByIdAndUpdate(req.params.id, { $push: { rating: req.params.value } }, { new: true })
   .then(theProfessional => { 
-    console.log(theProfessional)
     res.json(theProfessional)
   })
   .catch(error => console.log(error))

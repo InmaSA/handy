@@ -5,6 +5,7 @@ import {Toast} from 'react-bootstrap'
 import PartServices from '../../services/part.services'
 
 import Star from './Star'
+import ProfRating from './ProfRating'
 
 class FCard extends Component  {
   constructor (props) {
@@ -30,7 +31,7 @@ class FCard extends Component  {
 
 
   render() {
-
+    console.log(this.state.prof)
     return(
       <>
         <Toast onClose={this.handleToastClose} show={this.state.showToast} delay={3000} autohide style={{ position: 'fixed', top: 10, right: 10, zIndex: 9999 }}>
@@ -49,6 +50,8 @@ class FCard extends Component  {
                   <img width="100%" src={this.state.prof.imageUrl} alt={this.state.prof.username}></img>
               
                       {this.state.prof._id && <Star showToast={this.handleToastOpen} prof={this.state.prof._id} part={this.props.part}></Star>}
+
+                      {this.state.prof._id && <ProfRating prof={this.state.prof._id} rating={this.state.prof.rating}/>}
               
               </div>
 

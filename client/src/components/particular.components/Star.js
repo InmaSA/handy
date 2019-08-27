@@ -29,8 +29,9 @@ class Star extends Component {
     
   }
 
-  toggleStars = () => {
-
+  toggleStars = (e) => {
+    e.persist()
+    
     if (this.props.part.favourites.includes(this.props.prof)) {
       this.partServices.removeFavourites(this.props.part._id, this.props.prof)
       this.setState({wichStar: '../../../images/emptyStar.svg' })
