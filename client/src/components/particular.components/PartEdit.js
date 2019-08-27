@@ -73,7 +73,7 @@ class PartEdit extends Component {
     const id = this.props.userInSession.data._id
 
     this.partServices.deleteParticular(id)
-    .then(() => this.props.history.push('/'))
+    .then(() => this.props.setUser(null))
     .catch(err => console.log(err))
   }
 

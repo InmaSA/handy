@@ -34,16 +34,22 @@ class Star extends Component {
     
     if (this.props.part.favourites.includes(this.props.prof)) {
       this.partServices.removeFavourites(this.props.part._id, this.props.prof)
-      this.setState({wichStar: '../../../images/emptyStar.svg' })
+      .then(theParticular => {
+        this.props.setUser(theParticular)
+        this.setState({wichStar: '../../../images/emptyStar.svg' })
+      })
     } else {
       this.partServices.updateFavourites(this.props.part._id, this.props.prof)
-      this.setState({wichStar: '../../../images/fullStar.svg' })
+      .then(theParticular => {
+        this.props.setUser(theParticular)
+        this.setState({wichStar: '../../../images/fullStar.svg' })
+      })
     }
     this.props.showToast()
   }
 
   render() {
-    
+    console.log(this.props.setUser)
       return (
         
           // <OverlayTrigger 

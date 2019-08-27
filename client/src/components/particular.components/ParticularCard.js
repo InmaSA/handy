@@ -69,6 +69,8 @@ class ParticularCard extends Component {
   clearAll = () => this.setState({professionals: this.state.origin})
 
   render() {
+
+    console.log(this.props.setUser)
   
     return (
       <div className="container"> 
@@ -148,7 +150,7 @@ class ParticularCard extends Component {
           <div className="row justify-content-around">
 
            
-              <Card openModal={this.handleModalOpen} closeModal={this.handleModalClose} professionals={this.state.professionals} part={this.props.user.data}/>
+              <Card openModal={this.handleModalOpen} closeModal={this.handleModalClose} professionals={this.state.professionals} part={this.props.user.data} setUser={this.props.setUser}/>
 
 
               <Modal show={this.state.showModal} onHide={this.handleModalClose}>

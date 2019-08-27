@@ -60,7 +60,7 @@ class MyFavourites extends Component {
               this.state.professionalsIds.map((elm) => {
                 return (
                   <div key={elm} className="col-md-5">
-                      <FCard  openModal={this.handleModalOpen} closeModal={this.handleModalClose} part={this.props.user.data} prof={elm}/>
+                      <FCard  openModal={this.handleModalOpen} closeModal={this.handleModalClose} part={this.props.user.data} prof={elm} setUser={this.props.setUser}/>
           
           
                       <Modal show={this.state.showModal} onHide={this.handleModalClose}>

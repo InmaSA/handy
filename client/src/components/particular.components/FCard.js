@@ -35,6 +35,7 @@ class FCard extends Component  {
   handleToastClose = () => this.setState({ showToast: false })
 
   render() {
+    console.log(this.props.setUser)
 
     return(
       <>
@@ -51,7 +52,7 @@ class FCard extends Component  {
               <div className="col-sm-4">
                   <img width="100%" src={this.state.prof.imageUrl} alt={this.state.prof.username}></img>
               
-                      {this.state.prof._id && <Star showToast={this.handleToastOpen} prof={this.state.prof._id} part={this.props.part}></Star>}
+                      {this.state.prof._id && <Star showToast={this.handleToastOpen} prof={this.state.prof._id} part={this.props.part} setUser={this.props.setUser} ></Star>}
 
                       {this.state.prof._id && <ProfRating prof={this.state.prof._id} rating={this.state.prof.rating}/>}
               

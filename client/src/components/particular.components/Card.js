@@ -19,6 +19,8 @@ class Card extends Component  {
 
 
   render() {
+
+    console.log(this.props.setUser)
     return(
       <>
         <Toast onClose={this.handleToastClose} show={this.state.showToast} delay={3000} autohide style={{ position: 'fixed', top: 10, right: 10, zIndex: 9999 }}>
@@ -39,7 +41,7 @@ class Card extends Component  {
                       <div className="col-sm-4">
                           <img width="100%" src={prof.imageUrl} alt={prof.username}></img>
                       
-                             <Star showToast={this.handleToastOpen} prof={prof._id} part={this.props.part}></Star>
+                             <Star showToast={this.handleToastOpen} prof={prof._id} part={this.props.part} setUser={this.props.setUser}></Star>
                             
                              <ProfRating prof={prof._id} rating={prof.rating}/> 
                       </div>
