@@ -21,8 +21,25 @@ class MyFavourites extends Component {
   }
 
   componentDidMount() {
+    let userId
+        if(this.props.user.data) { userId = this.props.user.data._id} else {
+          userId = this.props.location.state
+        }
 
-        this.partServices.getMyFavourites(this.props.user.data._id)
+        this.partServices.getMyFavourites(userId)
+        .then(response =>  {
+          this.setState({ professionalsIds: response.data.favourites })
+        })
+        .catch(err => console.log('err', err))
+  }
+
+  componentWillReceiveProps() {
+    let userId
+        if(this.props.user.data) { userId = this.props.user.data._id} else {
+          userId = this.props.location.state
+        }
+
+        this.partServices.getMyFavourites(userId)
         .then(response =>  {
           this.setState({ professionalsIds: response.data.favourites })
         })
@@ -37,35 +54,36 @@ class MyFavourites extends Component {
     return this.state.professionalsIds.length>=1 ? 
       <>
         <div className="container"> 
-  
-        {
-          this.state.professionalsIds.map((elm) => {
-            return (
-              <div key={elm} className="row justify-content-around">
-               
-                <FCard  openModal={this.handleModalOpen} closeModal={this.handleModalClose} part={this.props.user.data} prof={elm}/>
-    
-    
-                <Modal show={this.state.showModal} onHide={this.handleModalClose}>
-    
-                    <Modal.Header closeButton>
-                        <Modal.Title>Selecciona un día:</Modal.Title>
-                    </Modal.Header>
-    
-                    <Modal.Body>
-                        <CalendarComp profId={this.state.professionalId} part={this.props.user.data} closeModal={this.handleModalClose} ></CalendarComp>
-                    </Modal.Body>
-    
-                    <Modal.Footer>
-                        <p>Dinos por favor la fecha aproximada de comienzo del trabajo.</p>
-                    </Modal.Footer>
-    
-                </Modal>
-    
-              </div>
-          )
-        })
-      }
+            <div  className="row justify-content-around">
+      
+            {
+              this.state.professionalsIds.map((elm) => {
+                return (
+                  <div key={elm} className="col-md-5">
+                      <FCard  openModal={this.handleModalOpen} closeModal={this.handleModalClose} part={this.props.user.data} prof={elm}/>
+          
+          
+                      <Modal show={this.state.showModal} onHide={this.handleModalClose}>
+          
+                          <Modal.Header closeButton>
+                              <Modal.Title>Selecciona un día:</Modal.Title>
+                          </Modal.Header>
+                          
+                          <Modal.Body>
+                              <CalendarComp profId={this.state.professionalId} part={this.props.user.data} closeModal={this.handleModalClose} ></CalendarComp>
+                          </Modal.Body>
+          
+                          <Modal.Footer>
+                              <p>Dinos por favor la fecha aproximada de comienzo del trabajo.</p>
+                          </Modal.Footer>
+          
+                      </Modal>
+                  </div>
+        
+                )
+              })
+            }
+          </div>
       </div> 
     </>
       

@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap'
 
 import AuthServices from '../../services/auth.services'
 import ProfServices from '../../services/prof.services'
+import PartServices from '../../services/part.services'
 
 class ProfEdit extends Component {
   constructor(props){
@@ -24,6 +25,7 @@ class ProfEdit extends Component {
       imageUrl: 'https://res.cloudinary.com/dfevkaska/image/upload/v1566726933/handy/default-user.png.png' }
     this.authServices = new AuthServices()
     this.profServices = new ProfServices()
+    this.partServices = new PartServices()
   }
 
 
@@ -94,9 +96,15 @@ class ProfEdit extends Component {
 
     const id = this.props.userInSession.data._id
 
-    this.profServices.deleteProfessional(id)
-    .then(() => this.props.history.push('/'))
-    .catch(err => console.log(err))
+    this.partServices.removeAllFavourites(id)
+    // .then (() => {
+    //     console.log('hey')
+        this.profServices.deleteProfessional(id)
+        .then(() => <Redirect to='/'/>)
+        .catch(err => console.log(err))
+    // })
+    // .catch(err => console.log(err))
+
   }
 
 

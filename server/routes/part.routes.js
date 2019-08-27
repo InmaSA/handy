@@ -137,6 +137,22 @@ router.get('/remove-favourites/part/:partId/prof/:profId', (req, res) => {
 })
 
 
+router.get('/remove-from-all-favourites/:profId', (req,res) => {
+  console.log(req.params.profId)
+  const id = req.params.profId  
+
+  Particular.updateMany({favourites: {$in: req.params.profId}}, { $pull: { favourites: req.params.profId } } )
+  .then((algo) => {
+    console.log(algo)
+    algo.nModified
+  })
+  .catch(error => console.log(error))
+
+
+})
+
+
+
 router.get('/my-favourites/:partId', (req, res) => {
 
   Particular.findById(req.params.partId)

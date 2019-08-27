@@ -34,7 +34,11 @@ class NavBarPart extends Component {
 
         <Navbar bg="light" variant="light"
                 onToggle={this.setNavExpanded}
-                expanded={this.state.navExpanded}>
+                expand="lg"
+                // expanded={this.state.navExpanded}
+                >
+
+          <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand> 
 
             <Navbar.Toggle/>
 

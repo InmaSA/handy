@@ -21,14 +21,18 @@ class FCard extends Component  {
 
   componentDidMount() {
     this.partServices.getOneProfessional(this.props.prof)
-    .then(response => this.setState({prof: response.data}))
+    .then(response => {
+      console.log(response.data)
+      this.setState({prof: response.data})
+  
+  })
     .catch(err => console.log('err', err))
-
-
   }
+
+  
+
   handleToastOpen = () => this.setState({ showToast: true })
   handleToastClose = () => this.setState({ showToast: false })
-
 
   render() {
 
@@ -41,8 +45,6 @@ class FCard extends Component  {
             <Toast.Body>Acaban de actualizarse tus favoritos</Toast.Body>
         </Toast>
 
-
-        <div className="col-md-5">
 
           <div className="row">
 
@@ -62,10 +64,7 @@ class FCard extends Component  {
                   <h5>Trabajo en la provincia de {this.state.prof.localities}</h5>
                   <button value={this.state.prof._id} onClick={this.props.openModal}>Solicita presupuesto</button>
               </div>
-          </div>
-
-        </div>
-          
+          </div>        
         
       </>
     )  

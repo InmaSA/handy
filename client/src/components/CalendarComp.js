@@ -36,8 +36,16 @@ class CalendarComp extends Component {
 
 
   onClickDay = (value) => {
-    let valueOK = value.toUTCString().slice(0,16)
-    this.setState({date: valueOK})
+
+    const year = value.getFullYear()
+    const month = value.getMonth()
+    const day = value.getDate()+1
+    
+    let thisDate = new Date(year, month, day)
+    console.log(thisDate)
+
+    // let valueOK = value.toUTCString().slice(0,16)
+    this.setState({date: thisDate}, ()=> console.log(this.state))
   }
   handleChangeInput = e => this.setState({ [e.target.name]: e.target.value })
   
@@ -54,7 +62,7 @@ class CalendarComp extends Component {
     }, ()=> {
 
       const {date, event, particularId, particularName, particularEmail, particularPhone, professionalId} = this.state
-      console.log(date, event, particularId, particularName, particularEmail, particularPhone, professionalId)
+     
       this.eventsServices.postEvents({date, event, particularId, particularName, particularEmail, particularPhone, professionalId})
       .then(() => {
 
