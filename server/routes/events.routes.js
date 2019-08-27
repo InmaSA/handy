@@ -1,13 +1,24 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
 const nodemailer = require('nodemailer')
+const cron = require ('node-cron')
 
 const CalendarEvents  = require('../models/CalendarEvents.model')
 const Professional = require('../models/users/Professional.model')
 
+
+const pendingEmails = []
+
+
 router.post('/postEvents', (req, res) => {
+    console.log(req.body.particularEmail)
+    pendingEmails.push(req.body.particularEmail)
+    console.log('losnuevos emailsson', pendingEmails)
+
+
     CalendarEvents.create(req.body)
+         
         .then(theNewEvent => {
             res.json(theNewEvent)
 
@@ -39,6 +50,41 @@ router.post('/postEvents', (req, res) => {
         })
         .catch(err => console.log('Error', err))
 })
+
+
+
+// ENVÍO PROGRAMADO DE MAILS
+
+const task = cron.schedule ('1 * * * *', () => {
+
+    // ('* * 15 * *') cada 15 días
+    // ('* * * * 3') cada miércoles
+
+    let transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: `${process.env.EMAIL}`,
+            pass: `${process.env.PASSWORD}`
+        }
+    })
+
+    for (let i = 0; i < pendingEmails.length; i++) {
+
+        transporter.sendMail({
+            from: 'Handy <noreply@handy.com>',
+            to: pendingEmails[i],
+            subject: 'Recuerda dar tu valoración',
+            html: '¡Hola!. Recuerda dar tu valoración sobre los profesionales consultados.'
+            })
+            .then(info => console.log(info))
+            .catch(error => console.log(error))
+        
+    }
+
+})
+
+task.start()
+
 
 
 
