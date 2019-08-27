@@ -14,6 +14,7 @@ import NavBarPart from './components/particular.components/Navbar.Part'
 import PartHomePage from './components/particular.components/PartHomePage'
 import ParticularCard from './components/particular.components/ParticularCard'
 import MyFavourites from './components/particular.components/myFavourites'
+import PartEdit from './components/particular.components/PartEdit'
 
 import ProfSignup from './components/professional.components/ProfSignup'
 import ProfLogin from './components/professional.components/ProfLogin'
@@ -85,6 +86,8 @@ class App extends Component {
                     <Route path='/favourites' render={match => <MyFavourites {...match} user={this.state.loggedInUser} />}/>
                     <Route path='/postEvents' />
                     <Route path='getProfEvents/:profId' render={match => <Agenda {...match}/>} />
+                    <Route path="/edit-particular-profile" exact render={() => <PartEdit userInSession={this.state.loggedInUser} />}/>
+                    <Route path="/deleteParticular/:id" component={Home}/>
                     <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={PartHomePage} />   
               </Switch>
           </>

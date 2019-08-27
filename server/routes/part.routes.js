@@ -144,12 +144,52 @@ router.get('/my-favourites/:partId', (req, res) => {
   .catch(error => console.log(error))
 })
 
+
 router.get('/getOneProfessional/:id', (req, res) => {
   Professional.findById(req.params.id)
   .then(theProf => res.json(theProf))
   .catch(error => console.log(error))
 
 }) 
+
+
+router.get('/getOneParticular/:id', (req, res) => {
+  Particular.findById(req.params.id)
+  .then(thePart => res.json(thePart))
+  .catch(error => console.log(error))
+
+}) 
+
+
+
+router.post('/edit-particular-profile/:id', (req, res) => {
+  console.log('estoy en routes')
+  
+  const {username, email, phoneNumber} = req.body
+
+  Particular.findByIdAndUpdate(req.params.id, 
+    {$set:
+    {username: username, 
+    email: email, 
+    phoneNumber: phoneNumber
+    }}, 
+    { new: true })
+
+  .then(theParticular => {
+    console.log(theParticular)
+    res.json(theParticular)})
+  .catch(error => console.log(error))
+})
+
+
+router.get('/deleteParticular/:id', (req, res) => {
+
+  Particular.findByIdAndDelete(req.params.id)
+  .then(() => console.log('eliminado de la base de datos'))
+  .catch(error => console.log(error))
+})
+
+
 
 
 module.exports = router

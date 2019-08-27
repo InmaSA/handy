@@ -31,7 +31,7 @@ class FCard extends Component  {
 
 
   render() {
-    console.log(this.state.prof)
+
     return(
       <>
         <Toast onClose={this.handleToastClose} show={this.state.showToast} delay={3000} autohide style={{ position: 'fixed', top: 10, right: 10, zIndex: 9999 }}>

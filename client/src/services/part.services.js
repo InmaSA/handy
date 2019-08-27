@@ -17,5 +17,9 @@ export default class PartServices {
   removeFavourites = (partId, profId) =>   this.service.get(`remove-favourites/part/${partId}/prof/${profId}`)
   getMyFavourites = (partId)          =>   this.service.get(`my-favourites/${partId}`)
 
-  
+  getOneParticular = id => this.service.get(`getOneParticular/${id}`)
+  updateParticular = (id, username, email, phoneNumber) => {
+    return this.service.post(`edit-particular-profile/${id}`, {username, email, phoneNumber})
+  } 
+  deleteParticular = id => this.service.get(`deleteParticular/${id}`)
 }  

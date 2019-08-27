@@ -24,7 +24,6 @@ class MyFavourites extends Component {
 
         this.partServices.getMyFavourites(this.props.user.data._id)
         .then(response =>  {
-          console.log(response.data.favourites)
           this.setState({ professionalsIds: response.data.favourites })
         })
         .catch(err => console.log('err', err))
@@ -34,9 +33,6 @@ class MyFavourites extends Component {
   handleModalClose = () => this.setState({ showModal: false, professionalId: '' })
 
   render() {
-    console.log(this.props.user.data)
-    console.log(this.state.professionalsIds)
- 
 
     return this.state.professionalsIds.length>=1 ? 
       <>
