@@ -93,4 +93,8 @@ app.use('/api', require('./routes/events.routes'))
 
 app.use('/api', require('./routes/file-upload.routes'))
 
+
+
+app.use((req, res) => {     res.sendFile(__dirname + "/public/index.html");    })
+
 module.exports = app;
