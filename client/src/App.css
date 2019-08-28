@@ -9,7 +9,7 @@ body {
 
 
 .home-page {
-background-image: url('/images/background.jpg');
+background-image: url('/images/background-home.jpg');
 background-repeat: no-repeat;
 background-size: cover;
 }
@@ -97,13 +97,53 @@ height: 150px;
 }
 /* FORMULARIOS */
 
-label {
+/* label {
   display: block;
+} */
+
+.background-repeat {
+  background-image: url('/images/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  }
+
+
+.login-form {
+  margin: 50px auto;
+  color: #0b4577;
+  background-color: #dcdcdc;
+  border-radius: 20px;
+}
+.login-form img {
+width: 8%;
+margin-top: 20px;
+margin-left: 20px;
 }
 
-.submit-btn {
-  display: block;
+.login-form img:hover  {
+	opacity: 1;
+	-webkit-animation: flash 1.5s;
+	animation: flash 1.5s;
 }
+
+
+.login-form h3 {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.login-form form {
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
+.login-form .btn-light {
+  color: #0b4577;
+  border-color: #0b4577;
+  border-radius: 7px;
+}
+
 
 
 /* PROFILE DEL PARTICULAR */
@@ -121,5 +161,23 @@ h2 {
   margin: 0 auto;
 }
 
+
+
+@-webkit-keyframes flash {
+	0% {
+		opacity: .4;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes flash {
+	0% {
+		opacity: .4;
+	}
+	100% {
+		opacity: 1;
+	}
+}
 
 

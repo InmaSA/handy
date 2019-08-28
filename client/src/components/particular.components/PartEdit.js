@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Link} from 'react-router-dom'
+import { Link, Redirect} from 'react-router-dom'
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap'
 
 import AuthServices from '../../services/auth.services'
@@ -74,7 +74,9 @@ class PartEdit extends Component {
 
     this.partServices.deleteParticular(id)
     .then(() => this.props.setUser(null))
+
     .catch(err => console.log(err))
+    
   }
 
 
@@ -117,7 +119,7 @@ class PartEdit extends Component {
                   <button className="submit-btn" type="submit">Actualizar</button>
                   
                   <footer>
-                    <Link as="div" to="#"><small onClick={this.deletePart}>Darse de baja</small></Link>
+                    <Link as="div" to="/"><small onClick={this.deletePart}>Darse de baja</small></Link>
                   </footer>
               </form>
           </div>
