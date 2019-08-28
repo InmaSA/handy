@@ -15,11 +15,6 @@ class NavBarPart extends Component {
       this.authServices = new AuthServices()
   }
 
-  setNavExpanded = (expanded) => this.setState({ navExpanded: expanded })
-
-  closeNav= () => this.setState({ navExpanded: false })
-
-
   logout = () => {
     this.authServices.logout()
     .then(x => {
@@ -32,29 +27,25 @@ class NavBarPart extends Component {
   render() {
     return(
 
-        <Navbar bg="light" variant="light"
-                onToggle={this.setNavExpanded}
-                expand="lg"
-                // expanded={this.state.navExpanded}
-                >
+        <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
 
-          <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand> 
+            <Navbar.Brand href="/">
+              <img 
+                  src="../../../images/Handy-logo.png" 
+                  width="20%"
+                  alt="Handy logo">
+              </img>
+            </Navbar.Brand> 
 
-            <Navbar.Toggle/>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-            <Navbar.Collapse>
-                <Nav className="mr-auto" onSelect={this.closeNav}>
-                    <Nav.Link as="div"><Link to="/"><img 
-                        src="../../../images/Handy-icon.png" 
-                        width="5%"
-                        border-radius="25%"
-                        alt="icono de Handy">
-                    </img></Link></Nav.Link>
-
-                    <Nav.Link as="div"><Link to="/particular/profile">Volver a tu perfil</Link></Nav.Link> 
-                    <Nav.Link as="div"><Link to="/favourites">Mis favoritos</Link></Nav.Link>
-                    <Nav.Link as="div"><Link to="/edit-particular-profile">Editar mis datos</Link></Nav.Link>
-                    <Nav.Link as="div"><Link to="/" onClick={this.logout}>Cerrar sesión</Link></Nav.Link>
+            <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
+              
+                <Nav className="justify-content-end">
+                    <Nav.Link><Link to="/particular/profile">Inicio</Link></Nav.Link>
+                    <Nav.Link href="/favourites">Mis favoritos</Nav.Link>
+                    <Nav.Link href="/edit-particular-profile">Mis datos</Nav.Link>
+                    <Nav.Link href="/"onClick={this.logout}>Salir</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

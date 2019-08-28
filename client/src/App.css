@@ -15,7 +15,7 @@ background-size: cover;
 }
 
 .hero {
-  padding-top: 70px;
+  padding-top: 60px;
 }
 
 .home-big-logo {
@@ -79,7 +79,7 @@ margin-top: 30px;
 
 
 .carousel-item {
-height: 150px;
+height: 140px;
 }
 
 .carousel-caption {
@@ -95,6 +95,9 @@ height: 150px;
   font-size: 0.8em;
   font-style: italic;
 }
+
+
+
 /* FORMULARIOS */
 
 /* label {
@@ -108,42 +111,53 @@ height: 150px;
   height: 100vh;
   }
 
+  .background-repeat img {
+    width: 10%;
+    margin-top: 20px;
+    }
+  
+  .background-repeat img:hover  {
+    opacity: 1;
+    -webkit-animation: flash 1.5s;
+    animation: flash 1.5s;
+  }
+  
+  .login-form {
+    margin: 10px 30px 30px;
+    color: #0b4577;
+    background-color: #dcdcdc;
+    border-radius: 20px;
+  }
 
-.login-form {
-  margin: 50px auto;
-  color: #0b4577;
-  background-color: #dcdcdc;
-  border-radius: 20px;
-}
-.login-form img {
-width: 8%;
-margin-top: 20px;
-margin-left: 20px;
-}
+  .login-form h3 {
+    text-align: center;
+    padding-top: 50px;
+  }
 
-.login-form img:hover  {
-	opacity: 1;
-	-webkit-animation: flash 1.5s;
-	animation: flash 1.5s;
-}
+  .login-form form {
+    padding-top: 20px;
+    padding-bottom: 50px;
+  }
 
+  .flex {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
 
-.login-form h3 {
-  text-align: center;
-  padding-top: 10px;
-}
+  .login-form .btn-light {
+    color: #0b4577;
+    border-color: #0b4577;
+    border-radius: 7px;
+  }
 
-.login-form form {
-  padding-top: 20px;
-  padding-bottom: 50px;
-}
+  .to-signup {
+    color: #0b4577;
+    margin-top: 5px;
+    font-size: 0.9em;
+    margin-right: 20px;
 
-.login-form .btn-light {
-  color: #0b4577;
-  border-color: #0b4577;
-  border-radius: 7px;
-}
-
+  }
 
 
 /* PROFILE DEL PARTICULAR */

@@ -33,10 +33,10 @@ class PartLogin extends Component {
     <div className="background-repeat">
 
       <div className="container">
+        <Link to="/"><img src="/images/Handy-logo.png" alt="handy logo"></img></Link>  
         <div className="row justify-content-center">
 
           <div className="col-md-6 login-form">
-            <Link to="/"><img src="/images/Handy-icon.png" alt="handy icon"></img></Link>  
             <h3>Hola de nuevo, entra en tu cuenta: </h3>
               <div className="row justify-content-center">
             
@@ -51,8 +51,11 @@ class PartLogin extends Component {
                           <label htmlFor="input-password">Contraseña: </label>
                           <input type="password" className="form-control" name="password" id="input-password" value={this.state.password} onChange={this.handleChangeInput}></input>
                       </div>
-                      
-                      <button className="btn btn-light" type="submit">Accede</button>
+
+                      <div className="flex">
+                          <button className="btn btn-light" type="submit">Accede</button>
+                          <Link className="to-signup" to="/particular/signup">¿Aún no tienes cuenta?</Link>
+                      </div>
                   </form>
         
               </div>
