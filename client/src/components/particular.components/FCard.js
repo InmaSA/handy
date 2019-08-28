@@ -35,7 +35,7 @@ class FCard extends Component  {
   handleToastClose = () => this.setState({ showToast: false })
 
   render() {
-    console.log(this.props.setUser)
+    console.log(this.props)
 
     return(
       <>
@@ -54,7 +54,7 @@ class FCard extends Component  {
               
                       {this.state.prof._id && <Star showToast={this.handleToastOpen} prof={this.state.prof._id} part={this.props.part} setUser={this.props.setUser} ></Star>}
 
-                      {this.state.prof._id && <ProfRating prof={this.state.prof._id} rating={this.state.prof.rating}/>}
+                      {this.state.prof._id && <ProfRating prof={this.state.prof._id} rating={this.state.prof.rating} part={this.props.part} showProfs={this.props.showProfs}/>}
               
               </div>
 

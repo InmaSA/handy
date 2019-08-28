@@ -8,20 +8,14 @@ const CalendarEvents  = require('../models/CalendarEvents.model')
 const Professional = require('../models/users/Professional.model')
 
 
-const pendingEmails = []
-
 
 router.post('/postEvents', (req, res) => {
-    console.log(req.body.particularEmail)
-    pendingEmails.push(req.body.particularEmail)
-    console.log('losnuevos emailsson', pendingEmails)
-
-
+    console.log(req.body)
     CalendarEvents.create(req.body)
          
         .then(theNewEvent => {
             res.json(theNewEvent)
-
+            console.log(theNewEvent)
             Professional.findOne({_id: theNewEvent.professionalId})
             .then(theProf => { 
                 const profEmail = theProf.email 
@@ -56,8 +50,7 @@ router.post('/postEvents', (req, res) => {
 // ENVÍO PROGRAMADO DE MAILS
 
 const task = cron.schedule ('3 * * * *', () => {
-
-
+    
     let transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
@@ -66,21 +59,29 @@ const task = cron.schedule ('3 * * * *', () => {
         }
     })
 
-    for (let i = 0; i < pendingEmails.length; i++) {
+    CalendarEvents.find({sentEmail: false})
+    .then(theEmails => {
 
-        transporter.sendMail({
-            from: 'Handy <noreply@handy.com>',
-            to: pendingEmails[i],
-            subject: 'Recuerda dar tu valoración',
-            html: '¡Hola!. Recuerda dar tu valoración sobre los profesionales consultados.'
-            })
-            .then(info => console.log(info))
-            .catch(error => console.log(error))
-        
-    }
-
-
-
+        for (let i = 0; i < theEmails.length; i++) {
+    
+            transporter.sendMail({
+                from: 'Handy <noreply@handy.com>',
+                to: theEmails[i].particularEmail,
+                subject: 'Recuerda dar tu valoración',
+                html: '¡Hola!. Recuerda dar tu valoración sobre los profesionales consultados.'
+                })
+                .then(info => {
+                    console.log(info)
+                    
+                    CalendarEvents.updateMany({sentEmail: false}, {sentEmail: true })
+                    .then((x) => {
+                        console.log(x)
+                        x.nModified
+                    })
+                })    
+                .catch(error => console.log(error))     
+        }
+    })
 })
 
 task.start()

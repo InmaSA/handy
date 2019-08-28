@@ -24,7 +24,6 @@ class PartHomePage extends Component {
 
   render() {
 
-    console.log(this.props)
     return(
       <div className="container part-home-page">
         <header>

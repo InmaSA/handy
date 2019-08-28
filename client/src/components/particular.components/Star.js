@@ -41,6 +41,7 @@ class Star extends Component {
     } else {
       this.partServices.updateFavourites(this.props.part._id, this.props.prof)
       .then(theParticular => {
+        console.log(theParticular)
         this.props.setUser(theParticular)
         this.setState({wichStar: '../../../images/fullStar.svg' })
       })
@@ -49,7 +50,7 @@ class Star extends Component {
   }
 
   render() {
-    console.log(this.props.setUser)
+console.log(this.props)
       return (
         
           // <OverlayTrigger 

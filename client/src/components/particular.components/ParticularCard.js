@@ -25,10 +25,13 @@ class ParticularCard extends Component {
   }
 
   componentDidMount() {
+    this.showProfessionals()
+  }
+  
+  showProfessionals() {
     this.partServices.getProfessionals(this.props.match.params.job)
         .then(response => this.setState({ professionals: response.data, origin: response.data }))
         .catch(err => console.log('err', err))
-        
   }
 
   handleModalOpen = (e) => this.setState({ showModal: true, professionalId: e.target.value })
@@ -69,8 +72,6 @@ class ParticularCard extends Component {
   clearAll = () => this.setState({professionals: this.state.origin})
 
   render() {
-
-    console.log(this.props.setUser)
   
     return (
       <div className="container"> 
@@ -150,7 +151,7 @@ class ParticularCard extends Component {
           <div className="row justify-content-around">
 
            
-              <Card openModal={this.handleModalOpen} closeModal={this.handleModalClose} professionals={this.state.professionals} part={this.props.user.data} setUser={this.props.setUser}/>
+              <Card openModal={this.handleModalOpen} closeModal={this.handleModalClose} professionals={this.state.professionals} part={this.props.user.data} setUser={this.props.setUser} showProfs={this.showProfessionals}/>
 
 
               <Modal show={this.state.showModal} onHide={this.handleModalClose}>

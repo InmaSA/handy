@@ -80,8 +80,7 @@ class App extends Component {
               <NavBarPart setUser={this.setTheUser} userInSession={this.state.loggedInUser} />
 
               <Switch>
-                  <Route path="/" exact render={() => <Home setUser={this.setTheUser}></Home>} />
-                    {/* <Route path="/logout" component={Home}/>  */}
+                    <Route path="/" exact render={() => <Home setUser={this.setTheUser}></Home>} />
                     <Route path='/search/:job' render={match => <ParticularCard {...match} user={this.state.loggedInUser} setUser={this.setTheUser} />} />
                     <Route path='/favourites' render={match => <MyFavourites {...match} user={this.state.loggedInUser} setUser={this.setTheUser} />}/>
                     <Route path='/postEvents' />
@@ -98,7 +97,6 @@ class App extends Component {
             <>
               <Switch>
                   <Route path="/" exact render={() => <Home setUser={this.setTheUser}></Home>} />
-                  {/* <Route path="/logout" component={Home}/>   */}
                   <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={PartHomePage} />   
                   <ProtectedRoute path='/professional/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={ProfHomePage} />   
                   <Route exact path='/particular/login'  render={match => <PartLogin {...match}  setUser={this.setTheUser} />} />

@@ -8,8 +8,10 @@ const calendarEventsSchema = new Schema({
   particularName: {type: String, require: true},
   particularEmail: {type: String, require: true},
   particularPhone: {type: String, require: true},
-  professionalId: {type: Schema.Types.ObjectId, require: true}
-  }, 
+  professionalId: {type: Schema.Types.ObjectId, require: true},
+  sentEmail: {type: Boolean,
+              default: false}
+              }, 
   {timestamps: true}
 )
 

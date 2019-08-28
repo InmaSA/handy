@@ -22,7 +22,7 @@ class ProfRating extends Component {
   changeRate= (value) => {
     this.profServices.rateProfessional(this.props.prof, value)
     .then(theProf => {
-      this.setState({ratingValue: theProf.data.rating})
+      this.setState({ratingValue: theProf.data.rating}) 
   })
     .catch(err => console.log('err', err))
   }
@@ -32,7 +32,7 @@ class ProfRating extends Component {
   }
 
   render () {
-
+    console.log(this.props.showProfs)
     if(this.props.rating.length === 0) {
         return (
           <>

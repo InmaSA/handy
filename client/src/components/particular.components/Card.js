@@ -20,7 +20,8 @@ class Card extends Component  {
 
   render() {
 
-    console.log(this.props.setUser)
+    console.log(this.props.showProfs)
+
     return(
       <>
         <Toast onClose={this.handleToastClose} show={this.state.showToast} delay={3000} autohide style={{ position: 'fixed', top: 10, right: 10, zIndex: 9999 }}>
@@ -43,7 +44,7 @@ class Card extends Component  {
                       
                              <Star showToast={this.handleToastOpen} prof={prof._id} part={this.props.part} setUser={this.props.setUser}></Star>
                             
-                             <ProfRating prof={prof._id} rating={prof.rating}/> 
+                             <ProfRating prof={prof._id} rating={prof.rating} part={this.props.part} showProfs={this.props.showProfs}/> 
                       </div>
 
                       <div className="col-sm-6">
