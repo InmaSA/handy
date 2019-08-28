@@ -8,45 +8,93 @@ body {
 /* ESTILO DE LA HOME PAGE */
 
 
+.home-page {
+background-image: url('/images/background.jpg');
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+.hero {
+  padding-top: 70px;
+}
+
 .home-big-logo {
   border-radius: 8px;
   width: 100%;
 }
 
 .hero h1 {
-  color: #60b0f4;
+  color: #0b4577;
+  font-size: 2em;
   font-weight: 600px;
-  display: inline-block;
-}
-
-.home-row {
-  justify-content: space-evenly;
+  padding-top: 20px;
+  padding-right: 40px;
 }
 
 .home-cards {
-  color: white;
-  background-color: #60b0f4;
-  border-radius: 8px;
+  color: #0b4577;
   height: 350px;
+  padding-top: 50px;
 }
 
-.home-cards p {
+.home-cards h2 {
+font-size: 1em;
+line-height: 1.3em;
+padding: 10px 20px;
+}
+
+.access {
+margin-top: 30px;
+}
+
+.access p {
   text-align: center;
 }
 
 .button {
-  background-color: white;
-  border-radius: 20px;
+  background-color: #0b4577;
+  opacity: 0.4;
+  border-radius: 15px;
   display: block;
-  width: 40%;
-  color: #60b0f4;
+  width: 170px;
+  color: white;
+  text-align: center;
   font-weight: 600;
+  font-size: 0.9em;
   margin: 10px auto;
-  padding: 10px; 
-  text-decoration: none;
+  padding: 10px;  
   
 }
 
+.button:hover {
+  text-decoration-line: none;
+  color: white;
+  opacity: 0.3;
+  background-color: #0b4577;
+  
+}
+
+
+/* ESTILO DE LA CAROUSEL DE HOME */
+
+
+.carousel-item {
+height: 150px;
+}
+
+.carousel-caption {
+  color: #0b4577;
+
+}
+
+.carousel-caption h5 {
+  font-size: 0.9em;
+}
+
+.carousel-caption p {
+  font-size: 0.8em;
+  font-style: italic;
+}
 /* FORMULARIOS */
 
 label {
@@ -72,3 +120,6 @@ h2 {
   width: 100%;
   margin: 0 auto;
 }
+
+
+
