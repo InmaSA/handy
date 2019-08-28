@@ -4,7 +4,7 @@ export default class ProfServices {
   constructor() {
 
       this.service = axios.create({
-        baseURL: 'http://localhost:5000/api/',
+        baseURL: `${process.env.REACT_APP_URL}`,
         withCredentials: true
       })
   }
