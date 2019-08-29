@@ -3,6 +3,8 @@ body {
   font-weight: 300px; 
 }
 
+
+
 /* NAVBAR */
 
 .navbar a {
@@ -13,6 +15,9 @@ body {
 .navbar a:hover {
   font-weight: bold;
 }
+
+
+
 /* ESTILO DE LA HOME PAGE */
 
 
@@ -107,6 +112,7 @@ height: 140px;
 
 
 
+
 /* FORMS: LOGIN, SIGNUP & EDIT */
 
 
@@ -132,7 +138,6 @@ height: 140px;
     margin: 10px 30px 30px;
     color: #0b4577;
     background-color: #dcdcdc;
-    border-radius: 20px;
   }
 
   .login-form h3 {
@@ -177,6 +182,73 @@ height: 140px;
     margin: 20px auto;
   }
 
+  .file-input-wrapper {
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .file-input-wrapper  input[type="file"] {
+    font-size: 200px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+  }
+  .file-input-wrapper  .btn-file-input {
+    color: #0b4577;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #0b4577;
+    border-radius: 7px;
+    height: 28px;
+    font-size: 0.8em;
+  }
+
+  .prof-signup {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+  }
+
+  .prof-signup .btn-light{
+    width: 80%;
+    text-align: center;
+  }
+  
+
+  .actual-data {
+    padding-top: 30px;
+  }
+
+  .actual-data header{
+
+    width: 95%;
+    background-color: #f8f9fa;
+    padding: 10px;
+    margin: 10px auto;
+    border-radius: 3px;
+
+  }
+
+  .actual-data body {
+    background-color: #dcdcdc;
+    padding: 10px;
+    margin-top: 30px;
+  }
+
+  .actual-data article {
+    color: #0b4577;
+    background-color: #f8f9fa;
+    padding-top: 10px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+  }
+
 /* PROFILE DEL PARTICULAR */
 
 
@@ -205,7 +277,6 @@ height: 140px;
 
 .section-card img {
   background-color: white;
-  border-radius: 15px;
   border: 2px solid #0b4577;
   width: 70%;
   margin: 0 auto;
@@ -267,6 +338,7 @@ h2 {
 }
 
 
+
 /* CARD Y FCARD */
 
 .prof-card {
@@ -312,6 +384,78 @@ padding: 10px;
 .event {
   margin-left: 50px;
 }
+
+
+/* PROFESSIONAL PROFILE */
+
+.prof-home-page {
+  background-color: #dcdcdc;
+  padding-top: 20px;
+  height: 100vh;
+}
+
+.agenda-div {
+  padding-top:50px;
+  text-align: center;
+}
+
+.agenda-div img{
+  background-color: white;
+  border: 2px solid #0b4577;
+
+  -webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+
+.agenda-div img:hover {
+  -webkit-transform: scale(1.04);
+	transform: scale(1.04);
+}
+
+
+
+/* PROFESSIONAL AGENDA */
+
+
+.agenda header {
+  font-weight: bold;
+  background-color: #0b4577;
+  opacity: 0.5;
+  color: white;
+}
+
+.agenda .main {
+opacity: 1;
+}
+
+.agenda article {
+  border-bottom: 3px solid #0b4577;
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  color: #0b4577;
+  border-color: #0b4577;
+  border-radius: 7px;
+  background-color: #f8f9fa;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* LOGO LOGIN SIGNUP */
 

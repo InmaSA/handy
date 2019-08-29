@@ -1,17 +1,9 @@
 import React, {Component} from 'react'
 import Calendar from 'react-calendar'
-import moment from 'moment'
-import 'moment-timezone'
 
 import EventsServices from '../services/events.services'
 
 import Modal from 'react-bootstrap/Modal'
-
-const jun = moment("2014-06-01T12:00:00Z")
-const dec = moment("2014-12-01T12:00:00Z")
-
-jun.tz('Europe/Madrid').format('ha z')
-dec.tz('Europe/Madrid').format('ha z')
 
 
 class CalendarComp extends Component {
@@ -42,10 +34,10 @@ class CalendarComp extends Component {
     const day = value.getDate()+1
     
     let thisDate = new Date(year, month, day)
+    let finalDate= thisDate.toUTCString().slice(0,16)
     console.log(thisDate)
 
-    // let valueOK = value.toUTCString().slice(0,16)
-    this.setState({date: thisDate}, ()=> console.log(this.state))
+    this.setState({date: finalDate}, ()=> console.log(this.state))
   }
   handleChangeInput = e => this.setState({ [e.target.name]: e.target.value })
   

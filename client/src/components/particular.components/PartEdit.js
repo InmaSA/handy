@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import { Link, Redirect} from 'react-router-dom'
-import { Card, ListGroup, ListGroupItem } from 'react-bootstrap'
 
 import AuthServices from '../../services/auth.services'
 import PartServices from '../../services/part.services'
@@ -87,24 +86,36 @@ class PartEdit extends Component {
 
         <div className="container">
           <div className="row justify-content-around edit-row">
-            <div className="col-md-4 login-form">
+
+            <section className="col-md-4 login-form">
 
               <h3>Estos son tus datos:</h3>
-              
-              <Card bg="light" border="primary" style={{ width: '17rem' }}>
-                <Card.Body>
-                  <Card.Title>{this.state.actualUsername}</Card.Title>
-                </Card.Body>
 
-                <ListGroup className="list-group-flush">
-                  <ListGroupItem>{this.state.actualEmail}</ListGroupItem>
-                  <ListGroupItem>{this.state.actualPhone}</ListGroupItem>
-                </ListGroup>
+              <div className="actual-data">
 
-              </Card>
-            </div>
+                <header>
+                  <h5>{this.state.actualUsername}</h5>
+                </header>
+                
+                <body>
+
+                  <article>
+                    <p>{this.state.actualEmail}</p>
+                  </article>
+
+                  <article>
+                    <p>{this.state.actualPhone}</p>
+                  </article>
+
+                </body>
+
+              </div>
+
+            </section>
             
-            <div className="col-md-4 login-form">
+
+
+            <section className="col-md-4 login-form">
 
               <h3>Puedes actualizarlos aquí:</h3>
 
@@ -131,7 +142,7 @@ class PartEdit extends Component {
                     </div>  
 
                 </form>
-            </div>
+            </section>
 
           </div>
         </div>

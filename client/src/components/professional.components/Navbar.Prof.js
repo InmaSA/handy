@@ -16,9 +16,6 @@ class NavBarPart extends Component {
       this.authServices = new AuthServices()
   }
 
-  setNavExpanded = (expanded) => this.setState({ navExpanded: expanded })
-  closeNav= () => this.setState({ navExpanded: false })
-
 
   logout = () => {
     this.authServices.logout()
@@ -32,29 +29,29 @@ class NavBarPart extends Component {
   render() {
     console.log(this.props.match)
     return(
-      <>
-        <Navbar bg="light" variant="light"
-                onToggle={this.setNavExpanded}
-                expanded={this.state.navExpanded}>
+
+        <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+
+            <Navbar.Brand href="/">
+              <img 
+                  src="../../../images/Handy-logo.png" 
+                  width="20%"
+                  alt="Handy logo">
+              </img>
+            </Navbar.Brand> 
 
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-            <Navbar.Collapse>
-                <Nav className="mr-auto" onSelect={this.closeNav}>
-                    <Nav.Link as="div"><Link to="/"><img 
-                        src="../../../images/Handy-icon.png" 
-                        width="5%"
-                        border-radius="25%"
-                        alt="icono de Handy">
-                    </img></Link></Nav.Link>
-                   
-                    <Nav.Link as="div"><Link to="/professional/profile">Volver a tu perfil</Link></Nav.Link>   
-                    <Nav.Link as="div"><Link to="/edit-professional-profile">Editar mis datos</Link></Nav.Link>
-                    <Nav.Link as="div"><Link to="/" onClick={this.logout}>Cerrar sesión</Link></Nav.Link>
+            <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
+
+                <Nav className="justify-content-end">
+                    <Nav.Link as="div"><Link to="/professional/profile">Inicio/ Mi agenda</Link></Nav.Link>   
+                    <Nav.Link as="div"><Link to="/edit-professional-profile">Mis datos</Link></Nav.Link>
+                    <Nav.Link as="div"><Link to="/" onClick={this.logout}>Salir</Link></Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
-      </>
+      
     )
   }
 }  

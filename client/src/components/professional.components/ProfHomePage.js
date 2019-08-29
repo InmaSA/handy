@@ -35,18 +35,20 @@ class ProfHomePage extends Component {
   render = ()=> {
 
     return(
-      <>
+      <div className="prof-home-page">
+
         <header>
             <h2>Hola de nuevo {this.props.loggedInUser.data.username}</h2>
-
-            <Link to="#" onClick={this.handleModalOpen}><img src="../../../images/event.png" alt="events"></img></Link>
-
         </header>
+
+        <div className="agenda-div">
+            <Link to="#" onClick={this.handleModalOpen}><img src="../../../images/agenda.png" alt="agenda"></img></Link>
+        </div>
 
         <Modal show={this.state.showModal} onHide={this.handleModalClose}>
 
             <Modal.Header closeButton>
-                <Modal.Title>Mi agenda</Modal.Title>
+                <Modal.Title>Estas son las citas de tu agenda:</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>              
@@ -58,7 +60,7 @@ class ProfHomePage extends Component {
             </Modal.Footer>
 
         </Modal>
-      </>
+      </div>
     )
   }
 
