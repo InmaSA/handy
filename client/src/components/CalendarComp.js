@@ -98,10 +98,10 @@ class CalendarComp extends Component {
             </Modal.Header>
 
             <Modal.Body>
-                <form onSubmit={this.handleFormSubmit}>
+                <form className="form-inline" onSubmit={this.handleFormSubmit}>
                     <label htmlFor="input-event"></label>
-                    <input type="textarea" name="event" id="input-event" value={this.state.event} onChange={this.handleChangeInput}></input>
-                    <button type="submit" onClick={this.handleModalClose}>Enviar</button>
+                    <input className="form-control" type="textarea" name="event" id="input-event" value={this.state.event} onChange={this.handleChangeInput}></input>
+                    <button className="submit-btn btn-light event" type="submit" onClick={this.handleModalClose}>Enviar</button>
                 </form>
             </Modal.Body>
 

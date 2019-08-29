@@ -47,12 +47,15 @@ class FCard extends Component  {
         </Toast>
 
 
-          <div className="row">
+          <div className="row justify-content-around prof-card-content">
 
               <div className="col-sm-4">
+
                   <img width="100%" src={this.state.prof.imageUrl} alt={this.state.prof.username}></img>
-              
-                      {this.state.prof._id && <Star showToast={this.handleToastOpen} prof={this.state.prof._id} part={this.props.part} setUser={this.props.setUser} ></Star>}
+                     
+                      <div className="favourite-star">
+                         {this.state.prof._id && <Star showToast={this.handleToastOpen} prof={this.state.prof._id} part={this.props.part} setUser={this.props.setUser} ></Star>}
+                      </div>
 
                       {this.state.prof._id && <ProfRating prof={this.state.prof._id} rating={this.state.prof.rating} part={this.props.part} showProfs={this.props.showProfs}/>}
               
@@ -60,10 +63,10 @@ class FCard extends Component  {
 
               <div className="col-sm-6">
                   <h5>Mi nombre es {this.state.prof.username}</h5>
-                  <h5>Mi dedico a {this.state.prof.job}</h5>
+                  <p>Mi dedico a {this.state.prof.job}</p>
                   <p>'{this.state.prof.description}'</p>
-                  <h5>Trabajo en la provincia de {this.state.prof.localities}</h5>
-                  <button value={this.state.prof._id} onClick={this.props.openModal}>Solicita presupuesto</button>
+                  <p>Trabajo en la provincia de {this.state.prof.localities}</p>
+                  <button className="btn-light" value={this.state.prof._id} onClick={this.props.openModal}>Solicita presupuesto</button>
               </div>
           </div>        
         

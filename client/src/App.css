@@ -100,9 +100,6 @@ height: 140px;
 
 /* FORMULARIOS */
 
-/* label {
-  display: block;
-} */
 
 .background-repeat {
   background-image: url('/images/background.jpg');
@@ -163,9 +160,9 @@ height: 140px;
 /* PROFILE DEL PARTICULAR */
 
 
-
 .part-home-page {
   background-color: #dcdcdc;
+  padding-top: 20px;
 }
 
 .part-home-page h2 {
@@ -204,6 +201,96 @@ height: 140px;
 }
 
 
+
+/* PARTICULAR CARD & MYFAVOURITES*/
+
+.part-card {
+  padding-top: 20px;
+  background-color: #dcdcdc;
+  height: 100vh;
+}
+
+.search {
+margin-bottom: 50px; 
+border: 0.8px solid #0b4577;
+border-radius: 5px;
+padding: 20px 10px;
+background-color: white;
+}
+
+.search .label {
+margin-right: 10px;
+}
+
+.search .localities  {
+  margin-right: 10px;
+}
+
+.search .btn-light {
+  color: #0b4577;
+  border-color: #0b4577;
+  border-radius: 7px;
+}
+
+.search .ver {
+  width: 70px;
+}
+
+.card-rows {
+  margin-top: 30px;
+}
+
+h2 {
+  color: #0b4577;
+  text-align: center;
+}
+
+
+/* CARD Y FCARD */
+
+.prof-card {
+  border-radius: 15px;
+  border: 0.5px solid #0b4577;
+  background-color: white;
+}
+
+.prof-card-content {
+padding: 10px; 
+}
+.prof-card-content .btn-light {
+  color: #0b4577;
+  border-color: #0b4577;
+  border-radius: 7px;
+}
+
+.prof-card-content .favourite-star {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+/* MODALES */
+
+
+.modal-title {
+  color: #0b4577;
+  margin: auto;
+}
+
+.react-calendar {
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.btn-light {
+  color: #0b4577;
+  border-color: #0b4577;
+  border-radius: 7px;
+}
+
+.event {
+  margin-left: 50px;
+}
 
 /* LOGO LOGIN SIGNUP */
 

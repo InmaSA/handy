@@ -35,24 +35,27 @@ class Card extends Component  {
           this.props.professionals.map(prof => {  
             return (
 
-                <div className="col-md-5" key={prof._id}>
+                <div className="col-md-5 prof-card" key={prof._id}>
 
-                  <div className="row">
+                  <div className="row justify-content-around prof-card-content">
 
                       <div className="col-sm-4">
+                        
                           <img width="100%" src={prof.imageUrl} alt={prof.username}></img>
-                      
-                             <Star showToast={this.handleToastOpen} prof={prof._id} part={this.props.part} setUser={this.props.setUser}></Star>
+                           
+                            <div className="favourite-star">
+                                <Star showToast={this.handleToastOpen} prof={prof._id} part={this.props.part} setUser={this.props.setUser}></Star>
+                            </div>
                             
                              <ProfRating prof={prof._id} rating={prof.rating} part={this.props.part} showProfs={this.props.showProfs}/> 
                       </div>
 
                       <div className="col-sm-6">
                           <h5>Mi nombre es {prof.username}</h5>
-                          <h5>Mi dedico a {prof.job}</h5>
+                          <p>Mi dedico a {prof.job}</p>
                           <p>'{prof.description}'</p>
-                          <h5>Trabajo en la provincia de {prof.localities}</h5>
-                          <button value={prof._id} onClick={this.props.openModal}>Solicita presupuesto</button>
+                          <p>Trabajo en la provincia de {prof.localities}</p>
+                          <button className="btn-light" value={prof._id} onClick={this.props.openModal}>Solicita presupuesto</button>
                       </div>
                   </div>
 

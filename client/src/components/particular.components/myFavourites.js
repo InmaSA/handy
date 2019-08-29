@@ -52,14 +52,20 @@ class MyFavourites extends Component {
   render() {
 
     return this.state.professionalsIds.length>=1 ? 
-      <>
+    
+      <div className="part-card">
         <div className="container"> 
-            <div  className="row justify-content-around">
+
+            <header>
+                <h2>Estos son tus favorit@s:</h2>
+            </header>
+
+            <div  className="row justify-content-around card-rows">
       
             {
               this.state.professionalsIds.map((elm) => {
                 return (
-                  <div key={elm} className="col-md-5">
+                  <div key={elm} className="col-md-5 prof-card">
                       <FCard  openModal={this.handleModalOpen} closeModal={this.handleModalClose} part={this.props.user.data} prof={elm} setUser={this.props.setUser}/>
           
           
@@ -85,7 +91,7 @@ class MyFavourites extends Component {
             }
           </div>
       </div> 
-    </>
+    </div>
       
   : 
      (
