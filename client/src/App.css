@@ -3,8 +3,16 @@ body {
   font-weight: 300px; 
 }
 
+/* NAVBAR */
 
+.navbar a {
+  color: #0b4577;
+  text-decoration: none;
+}
 
+.navbar a:hover {
+  font-weight: bold;
+}
 /* ESTILO DE LA HOME PAGE */
 
 
@@ -12,6 +20,7 @@ body {
 background-image: url('/images/background-home.jpg');
 background-repeat: no-repeat;
 background-size: cover;
+height: 100vh;
 }
 
 .hero {
@@ -174,6 +183,7 @@ height: 140px;
 .part-home-page {
   background-color: #dcdcdc;
   padding-top: 20px;
+  height: 100vh;
 }
 
 .part-home-page h2 {

@@ -24,7 +24,7 @@ class Card extends Component  {
 
     return(
       <>
-        <Toast onClose={this.handleToastClose} show={this.state.showToast} delay={3000} autohide style={{ position: 'fixed', top: 10, right: 10, zIndex: 9999 }}>
+        <Toast onClose={this.handleToastClose} show={this.state.showToast} delay={3000} autohide style={{ position: 'fixed', bottom: 10, right: 10, zIndex: 9999 }}>
             <Toast.Header>
                 <strong className="mr-auto">¡Listo!</strong>
             </Toast.Header>

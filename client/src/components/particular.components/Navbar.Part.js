@@ -43,9 +43,9 @@ class NavBarPart extends Component {
               
                 <Nav className="justify-content-end">
                     <Nav.Link as="div"><Link to="/particular/profile">Inicio</Link></Nav.Link>
-                    <Nav.Link href="/favourites">Mis favoritos</Nav.Link>
-                    <Nav.Link href="/edit-particular-profile">Mis datos</Nav.Link>
-                    <Nav.Link href="/"onClick={this.logout}>Salir</Nav.Link>
+                    <Nav.Link as="div"><Link to="/favourites">Mis favoritos</Link></Nav.Link>
+                    <Nav.Link as="div"><Link to="/edit-particular-profile">Mis datos</Link></Nav.Link>
+                    <Nav.Link as="div"><Link to="/"onClick={this.logout}>Salir</Link></Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
