@@ -95,11 +95,16 @@ class MyFavourites extends Component {
       
   : 
      (
-        <div className="container">
+       <div className="part-card">
 
-          <h2>Aún no has añadido profesionales a tus favoritos</h2>
+          <div className="container">
 
-        </div>
+            <header>
+                <h2>Aún no has añadido profesionales a tus favoritos</h2>
+            </header>
+
+          </div>
+       </div>
       )
     
   }

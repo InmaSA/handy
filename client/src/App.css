@@ -98,15 +98,15 @@ height: 140px;
 
 
 
-/* FORMULARIOS */
+/* FORMS: LOGIN, SIGNUP & EDIT */
 
 
-.background-repeat {
-  background-image: url('/images/background.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  }
+  .background-repeat {
+    background-image: url('/images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    }
 
   .background-repeat img {
     width: 10%;
@@ -148,7 +148,7 @@ height: 140px;
     border-radius: 7px;
   }
 
-  .to-signup {
+  .to-signup-or-delete {
     color: #0b4577;
     margin-top: 5px;
     font-size: 0.9em;
@@ -156,6 +156,17 @@ height: 140px;
 
   }
 
+  .edit-row {
+    padding-top: 30px;
+  }
+
+  .border.primary {
+    border-color: #0b4577 !important;
+  }
+
+  .card {
+    margin: 20px auto;
+  }
 
 /* PROFILE DEL PARTICULAR */
 

@@ -54,7 +54,7 @@ class PartLogin extends Component {
 
                       <div className="flex">
                           <button className="btn btn-light" type="submit">Accede</button>
-                          <Link className="to-signup" to="/particular/signup">¿Aún no tienes cuenta?</Link>
+                          <Link className="to-signup-or-delete" to="/particular/signup">¿Aún no tienes cuenta?</Link>
                       </div>
                   </form>
         

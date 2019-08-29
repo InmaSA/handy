@@ -42,7 +42,7 @@ class NavBarPart extends Component {
             <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
               
                 <Nav className="justify-content-end">
-                    <Nav.Link><Link to="/particular/profile">Inicio</Link></Nav.Link>
+                    <Nav.Link as="div"><Link to="/particular/profile">Inicio</Link></Nav.Link>
                     <Nav.Link href="/favourites">Mis favoritos</Nav.Link>
                     <Nav.Link href="/edit-particular-profile">Mis datos</Nav.Link>
                     <Nav.Link href="/"onClick={this.logout}>Salir</Nav.Link>

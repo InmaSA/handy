@@ -83,47 +83,57 @@ class PartEdit extends Component {
   render(){
 
     return(
-      <div className="container">
-        <div className="row">
-          <div className="col-md-5">
+      <div className="background-repeat">
 
-            <h3>Estos son tus datos:</h3>
+        <div className="container">
+          <div className="row justify-content-around edit-row">
+            <div className="col-md-4 login-form">
+
+              <h3>Estos son tus datos:</h3>
+              
+              <Card bg="light" border="primary" style={{ width: '17rem' }}>
+                <Card.Body>
+                  <Card.Title>{this.state.actualUsername}</Card.Title>
+                </Card.Body>
+
+                <ListGroup className="list-group-flush">
+                  <ListGroupItem>{this.state.actualEmail}</ListGroupItem>
+                  <ListGroupItem>{this.state.actualPhone}</ListGroupItem>
+                </ListGroup>
+
+              </Card>
+            </div>
             
-            <Card bg="light" border="primary" style={{ width: '17rem' }}>
-              <Card.Body>
-                <Card.Title>{this.state.actualUsername}</Card.Title>
-              </Card.Body>
+            <div className="col-md-4 login-form">
 
-              <ListGroup className="list-group-flush">
-                <ListGroupItem>{this.state.actualEmail}</ListGroupItem>
-                <ListGroupItem>{this.state.actualPhone}</ListGroupItem>
-              </ListGroup>
+              <h3>Puedes actualizarlos aquí:</h3>
 
-            </Card>
+                <form onSubmit={this.handleFormUpdate}>
+
+                    <div className="form-group">
+                        <label htmlFor="input-username">Nombre: </label>
+                        <input type="text" className="form-control" name="username" id="input-username" value={this.state.username} onChange={this.handleChangeInput}></input>
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="input-email">Email: </label>
+                        <input type="text" className="form-control" name="email" id="input-email" value={this.state.email} onChange={this.handleChangeInput}></input>
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="input-phone">Teléfono: </label>
+                        <input type="text" className="form-control" name="phoneNumber" id="input-phone" value={this.state.phoneNumber} onChange={this.handleChangeInput}></input>  
+                    </div>
+                      
+                    <div className="flex">
+                        <button className="btn btn-light" type="submit">Actualizar</button>
+                        <Link className="to-signup-or-delete" as="div" to="/"><p onClick={this.deletePart}>Darse de baja</p></Link>
+                    </div>  
+
+                </form>
+            </div>
+
           </div>
-          
-          <div className="col-md-5">
-
-            <h3>Actualiza tus datos:</h3>
-
-              <form onSubmit={this.handleFormUpdate}>
-                  <label htmlFor="input-username">Nombre:</label>
-                  <input type="text" name="username" id="input-username" value={this.state.username} onChange={this.handleChangeInput}></input>
-                  
-                  <label htmlFor="input-email">Email:</label>
-                  <input type="text" name="email" id="input-email" value={this.state.email} onChange={this.handleChangeInput}></input>
-                  
-                  <label htmlFor="input-phone">Teléfono: </label>
-                  <input type="text" name="phoneNumber" id="input-phone" value={this.state.phoneNumber} onChange={this.handleChangeInput}></input>  
-                    
-                  <button className="submit-btn" type="submit">Actualizar</button>
-                  
-                  <footer>
-                    <Link as="div" to="/"><small onClick={this.deletePart}>Darse de baja</small></Link>
-                  </footer>
-              </form>
-          </div>
-
         </div>
       </div>
     )
