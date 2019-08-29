@@ -49,7 +49,7 @@ router.post('/postEvents', (req, res) => {
 
 // ENVÍO PROGRAMADO DE MAILS
 
-const task = cron.schedule ('3 * * * *', () => {
+const task = cron.schedule ('1 * * * *', () => {
     
     let transporter = nodemailer.createTransport({
         service: 'Gmail',

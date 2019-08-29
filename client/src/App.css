@@ -16,6 +16,11 @@ body {
   font-weight: bold;
 }
 
+.navbar img:hover  {
+  opacity: 1;
+  -webkit-animation: flash 1.5s;
+  animation: flash 1.5s;
+}
 
 
 /* ESTILO DE LA HOME PAGE */
@@ -201,7 +206,7 @@ height: 140px;
     color: #0b4577;
     width: 100%;
     background-color: white;
-    border: 1px solid #0b4577;
+    border: 1px dotted #0b4577;
     border-radius: 7px;
     height: 28px;
     font-size: 0.8em;
@@ -223,14 +228,12 @@ height: 140px;
     padding-top: 30px;
   }
 
-  .actual-data header{
-
+  .actual-data header {
     width: 95%;
     background-color: #f8f9fa;
     padding: 10px;
     margin: 10px auto;
     border-radius: 3px;
-
   }
 
   .actual-data body {
@@ -248,6 +251,27 @@ height: 140px;
     margin-bottom: 15px;
     border-radius: 3px;
   }
+
+  .prof-header {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .prof-header img {
+    width: 25%;
+    margin-top: 0;
+  }
+
+  .prof-header h5 {
+    padding-top: 30px;
+  }
+
+  .prof-edit-leave {
+    margin-top: 30px;
+    text-align: right;
+  }
+
+
 
 /* PROFILE DEL PARTICULAR */
 
@@ -342,7 +366,6 @@ h2 {
 /* CARD Y FCARD */
 
 .prof-card {
-  border-radius: 15px;
   border: 0.5px solid #0b4577;
   background-color: white;
 }

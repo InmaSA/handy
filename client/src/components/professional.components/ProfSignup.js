@@ -77,7 +77,7 @@ class ProfSignup extends Component {
 
                                   <div className="form-group">
                                       <label htmlFor="input-password">Contraseña: </label>
-                                      <input className="form-control" type="password" className="form-control form-control-sm" name="password" id="input-password" value={this.state.password} onChange={this.handleChangeInput}></input>
+                                      <input className="form-control form-control-sm" type="password"  name="password" id="input-password" value={this.state.password} onChange={this.handleChangeInput}></input>
                                   </div>
 
                                   <div className="form-group">
@@ -168,8 +168,6 @@ class ProfSignup extends Component {
                                       <label htmlFor="input-description">Describe tu trabajo brevemente:</label>
                                       <input className="form-control form-control-sm" type="textaera" name="description" id="input-description" value={this.state.description} onChange={this.handleChangeInput}></input>
                                   </div>
-
-                                
 
                                   <div className="form-group">
                                       <label htmlFor="input-img">Por último, añade una foto de perfil:</label>
