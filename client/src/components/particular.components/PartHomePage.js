@@ -25,29 +25,40 @@ class PartHomePage extends Component {
   render() {
 
     return(
-      <div className="container part-home-page">
-        <header>
+      <div className="part-home-page">
 
-        </header>
-        <section className="row justify-content-around">
+        <div className="container">
+          <header>
+            <h2>Encuentra lo que necesitas:</h2>
+          </header>
+          <section className="section">
 
-            <div className="col-md-4 section">
-              <Link to="/search/hogar"><img src="../../../images/home.png" alt="home"></img></Link>
-            </div>
-            <div className="col-md-4 section">
-              <Link to="/search/salud"><img src="../../../images/health.png" alt="salud y belleza"></img></Link>
-            </div>
+              <div className="row justify-content-around">
 
-            <div className="col-md-4 section">
-              <Link to="/search/eventos"><img src="../../../images/event.png" alt="eventos"></img></Link>
-            </div>
+                  <div className="col-md-5 section-card one">
+                    <Link to="/search/hogar"><img src="../../../images/home.png" alt="home"></img></Link>
+                  </div>
+                  <div className="col-md-5 section-card one">
+                    <Link to="/search/salud"><img src="../../../images/health.png" alt="salud y belleza"></img></Link>
+                  </div>
+                  
+              </div>
 
-            <div className="col-md-4 section">
-              <Link to="/search/cultura"><img src="../../../images/theatre.png" alt="cultura y ocio"></img></Link>
-            </div>
-            
-            
-        </section>
+              <div className="row justify-content-around">
+
+                  <div className="col-md-5 section-card two">
+                    <Link to="/search/eventos"><img src="../../../images/event.png" alt="eventos"></img></Link>
+                  </div>
+
+                  <div className="col-md-5 section-card two">
+                    <Link to="/search/cultura"><img src="../../../images/theatre.png" alt="cultura y ocio"></img></Link>
+                  </div>
+
+              </div>
+              
+              
+          </section>
+        </div>
       </div>
     )
   }

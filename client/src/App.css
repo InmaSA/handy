@@ -161,20 +161,51 @@ height: 140px;
 
 
 /* PROFILE DEL PARTICULAR */
-/* 
-h2 {
-  color: #60b0f4;
-} */
 
-.section {
-  background-color: #60b0f4; 
-  
+
+
+.part-home-page {
+  background-color: #dcdcdc;
 }
-.section img {
-  width: 100%;
+
+.part-home-page h2 {
+  color: #0b4577;
+  text-align: center;
+}
+.section {
+  width: 80%;
   margin: 0 auto;
 }
 
+.one{
+  margin: 10px 0;
+}
+
+.two {
+  margin: 20px 0;
+}
+
+.section-card img {
+  background-color: white;
+  border-radius: 15px;
+  border: 2px solid #0b4577;
+  width: 70%;
+  margin: 0 auto;
+
+  -webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+.section-card img:hover {
+  -webkit-transform: scale(1.04);
+	transform: scale(1.04);
+}
+
+
+
+/* LOGO LOGIN SIGNUP */
 
 
 @-webkit-keyframes flash {
@@ -193,5 +224,6 @@ h2 {
 		opacity: 1;
 	}
 }
+
 
 
