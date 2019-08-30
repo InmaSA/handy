@@ -34,7 +34,7 @@ router.post('/postEvents', (req, res) => {
                     subject: 'Tienes un nuevo evento en tu agenda',
                     html: `${theNewEvent.particularName} quiere saber tu disponibilidad para el día ${theNewEvent.date}.
                      Por favor contacta llamando al ${theNewEvent.particularPhone}.
-                      Puedes ver el evento entrando en <a href="http://localhost:3000/professional/profile">tu perfil</a>`
+                      Puedes ver el evento entrando en <a href="https://inma-handy.herokuapp.com/">tu perfil</a>`
                     })
                     .then(info => console.log(info))
                     .catch(error => console.log(error))
