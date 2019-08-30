@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Link, Redirect } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 
 import AuthServices from '../../services/auth.services'
 import ProfServices from '../../services/prof.services'
@@ -96,13 +96,14 @@ class ProfEdit extends Component {
     const id = this.props.userInSession.data._id
 
     this.partServices.removeAllFavourites(id)
-    // .then (() => {
-    //     console.log('hey')
+
         this.profServices.deleteProfessional(id)
-        .then(() => <Redirect to='/'/>)
-        .catch(err => console.log(err))
-    // })
-    // .catch(err => console.log(err))
+        .then(() => {
+            this.props.setUser(null)
+            this.props.history.push('/')
+      
+        }) 
+        .catch(err => console.log('este ese el error',err))
 
   }
 
@@ -272,7 +273,7 @@ class ProfEdit extends Component {
                         </div>  
 
                         <div className="prof-edit-leave">
-                            <Link className="to-signup-or-delete" as="div" to="/"><p onClick={this.deleteProf}>Darse de baja</p></Link>
+                            <Link className="to-signup-or-delete" as="div" to="#"><p onClick={this.deleteProf}>Darse de baja</p></Link>
                         </div>
                    
                     </div>  

@@ -67,7 +67,7 @@ class App extends Component {
 
             <Switch>
                 <Route path="/" exact render={() => <Home setUser={this.setTheUser}></Home>} />
-                <Route path="/edit-professional-profile" exact render={() => <ProfEdit userInSession={this.state.loggedInUser} />}/>
+                <Route path="/edit-professional-profile" exact render={match => <ProfEdit {...match} userInSession={this.state.loggedInUser} setUser={this.setTheUser} />}/>
                 <Route path="/deleteProfessional/:id" component={Home}/>
                 <ProtectedRoute path='/professional/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={ProfHomePage} />   
             </Switch>
@@ -85,7 +85,7 @@ class App extends Component {
                     <Route path='/favourites' render={match => <MyFavourites {...match} user={this.state.loggedInUser} setUser={this.setTheUser} />}/>
                     <Route path='/postEvents' />
                     <Route path='getProfEvents/:profId' render={match => <Agenda {...match}/>} />
-                    <Route path="/edit-particular-profile" exact render={() => <PartEdit userInSession={this.state.loggedInUser} setUser={this.setTheUser} />}/>
+                    <Route path="/edit-particular-profile" exact render={match => <PartEdit {...match} userInSession={this.state.loggedInUser} setUser={this.setTheUser} />}/>
                     <Route path="/deleteParticular/:id" component={Home}/>
                     <ProtectedRoute path='/particular/profile' user={this.state.loggedInUser} setUser={this.setTheUser} component={PartHomePage} />   
               </Switch>

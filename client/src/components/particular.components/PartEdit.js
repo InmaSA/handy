@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-import { Link, Redirect} from 'react-router-dom'
+import { Link} from 'react-router-dom'
+
 
 import AuthServices from '../../services/auth.services'
 import PartServices from '../../services/part.services'
@@ -21,6 +23,9 @@ class PartEdit extends Component {
     this.partServices = new PartServices()
   }
 
+  static contextTypes = {
+    router: PropTypes.object
+  }
 
   componentDidMount() {
     console.log(this.props.userInSession.data._id)
@@ -72,10 +77,12 @@ class PartEdit extends Component {
     const id = this.props.userInSession.data._id
 
     this.partServices.deleteParticular(id)
-    .then(() => this.props.setUser(null))
-
-    .catch(err => console.log(err))
-    
+    .then(() => {
+        this.props.setUser(null)
+        this.props.history.push('/')
+  
+    }) 
+    .catch(err => console.log('este ese el error',err))
   }
 
 
@@ -138,7 +145,7 @@ class PartEdit extends Component {
                       
                     <div className="flex">
                         <button className="btn btn-light" type="submit">Actualizar</button>
-                        <Link className="to-signup-or-delete" as="div" to="/"><p onClick={this.deletePart}>Darse de baja</p></Link>
+                        <Link className="to-signup-or-delete" as="div" to="#"><p onClick={this.deletePart}>Darse de baja</p></Link>
                     </div>  
 
                 </form>

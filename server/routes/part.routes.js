@@ -201,7 +201,10 @@ router.post('/edit-particular-profile/:id', (req, res) => {
 router.get('/deleteParticular/:id', (req, res) => {
 
   Particular.findByIdAndDelete(req.params.id)
-  .then(() => console.log('eliminado de la base de datos'))
+  .then((x) => {
+    console.log('eliminado de la base de datos')
+    res.status(200).json(x)
+  })
   .catch(error => console.log(error))
 })
 
