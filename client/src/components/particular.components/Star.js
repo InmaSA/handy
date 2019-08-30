@@ -16,8 +16,8 @@ class Star extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.part.favourites)
-    console.log(this.props.prof)
+    // console.log(this.props.part.favourites)
+    // console.log(this.props.prof)
     this.wichOne()
   }
 
@@ -50,7 +50,7 @@ class Star extends Component {
   }
 
   render() {
-console.log(this.props)
+// console.log(this.props)
       return (
         
           // <OverlayTrigger 

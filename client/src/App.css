@@ -279,7 +279,7 @@ height: 120px;
 .part-home-page {
   background-color: #dcdcdc;
   padding-top: 20px;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .part-home-page h2 {
@@ -323,7 +323,7 @@ height: 120px;
 .part-card {
   padding-top: 20px;
   background-color: #dcdcdc;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .search {
@@ -368,6 +368,7 @@ h2 {
 .prof-card {
   border: 0.5px solid #0b4577;
   background-color: white;
+  margin-bottom: 30px;
 }
 
 .prof-card-content {
@@ -414,7 +415,7 @@ padding: 10px;
 .prof-home-page {
   background-color: #dcdcdc;
   padding-top: 20px;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .agenda-div {

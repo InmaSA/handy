@@ -20,7 +20,7 @@ class Card extends Component  {
 
   render() {
 
-    console.log(this.props.showProfs)
+    // console.log(this.props.showProfs)
 
     return(
       <>

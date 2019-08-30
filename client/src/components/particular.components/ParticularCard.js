@@ -17,7 +17,7 @@ class ParticularCard extends Component {
       professionals: [],
       origin: [],
       showModal: false,
-      localities: 'Albacete',
+      localities: '',
       description: '',
       professionalId: ''
       }
@@ -55,13 +55,16 @@ class ParticularCard extends Component {
   handleSearchInput = e => {
     this.setState({ [e.target.name]: e.target.value })
     this.searchDescription(this.state.description)
+    this.setState({ [e.target.name]: e.target.value })
   }
 
 
   searchDescription = (word) => {
+    console.log(word)
     let results = []
     this.state.professionals.find(elm => {
-      if (elm.description.includes(word)) {
+      console.log(elm)
+      if (elm.description.toLowerCase().includes(word.toLowerCase())) {
         results.push(elm)
         console.log(results)
       }
@@ -84,7 +87,7 @@ class ParticularCard extends Component {
                     <form className="form-inline" onSubmit={this.handleFormSubmit}>   
                         <label className="label" htmlFor="input-localities">Filtra por provincia: </label>
                         <select className="form-control form-control-sm localities" name="localities" id="input-localities" selected={this.state.localities} onChange={this.handleChangeInput}>
-                              <option selected="selected" value='Albacete'>Albacete</option>
+                              <option value='Albacete'>Albacete</option>
                               <option value='Alicante/Alacant'>Alicante/Alacant</option>
                               <option value='Almería'>Almería</option>
                               <option value='Araba/Álava'>Araba/Álava</option>

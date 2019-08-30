@@ -32,7 +32,7 @@ class ProfRating extends Component {
   }
 
   render () {
-    console.log(this.props.showProfs)
+    // console.log(this.props.showProfs)
     if(this.props.rating.length === 0) {
         return (
           <>
