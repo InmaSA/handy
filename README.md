@@ -1,27 +1,11 @@
 # handy
 
-passport.serializeUser((loggedInUser, cb) => {
-  
-  cb(null, (loggedInUser._id, loggedInUser.role))
-});
+Single page application in JS using Node.js and React.js.
+API calls with axios.
+DB in MongoDB.
+Scheduled task with cron.
 
-passport.deserializeUser((userIdFromSession, userRoleFromSession, cb) => {
 
-  if (userRoleFromSession == 'PART') {
-    Particular.findById(userIdFromSession, (err, userDocument) => {
-      if (err) {
-        cb(err)
-        return
-      }
-      cb(null, userDocument);
-    })
-    } else if (userRoleFromSession == 'PROF') {
-        Professional.findById(userIdFromSession, (err, userDocument) => {
-          if (err) {
-            cb(err)
-            return
-          }
-          cb(null, userDocument);
-        })
-      } 
-})
+npm i
+npm start
+
