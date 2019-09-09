@@ -21,10 +21,14 @@ authRoutes.post('/particular/signup', (req, res, next) => {
     }
 
     if(password.length < 7){
-        res.status(400).json({ message: 'Please make your password at least 8 characters long for security purposes.' })
+        res.status(400).json({ message: 'Debes introducir una contraseña de al menos 8 caracteres.' })
         return
     }
-  
+    if (phoneNumber !== /\d{6}/) {
+        res.status(400).json({ message: 'Debes introducir un número de 6 dígitos sin espacios.'})
+        return
+    }
+
     Particular.findOne({ username }, (err, foundUser) => {
 
         if(err){
@@ -49,7 +53,7 @@ authRoutes.post('/particular/signup', (req, res, next) => {
   
         NewPart.save(err => {
             if (err) {
-                res.status(400).json({ message: 'Algo no ha ido bien al guardar tus datos en nuestra base de datos, por favor inténtalo de nuevo' })
+                res.status(400).json({ message: 'Algo no ha ido bien al guardar tus datos, por favor inténtalo de nuevo' })
                 return
             }
             req.login(NewPart, (err) => {
@@ -105,7 +109,7 @@ authRoutes.post('/professional/signup', (req, res, next) => {
     }
 
     if(password.length < 7){
-        res.status(400).json({ message: 'Please make your password at least 8 characters long for security purposes.' })
+        res.status(400).json({ message: 'Debes introducir una contraseña de al menos 8 caracteres.' })
         return
     }
   
@@ -139,7 +143,7 @@ authRoutes.post('/professional/signup', (req, res, next) => {
         NewPart.save(err => {
             if (err) {
                 console.log(err)
-                res.status(400).json({ message: 'Algo no ha ido bien al guardar tus datos en nuestra base de datos, por favor inténtalo de nuevo' })
+                res.status(400).json({ message: 'Algo no ha ido bien al guardar tus datos, por favor inténtalo de nuevo' })
                 return
             }
             req.login(NewPart, (err) => {
@@ -189,7 +193,7 @@ authRoutes.post('/professional/login', (req, res, next) => {
 authRoutes.post('/logout', (req, res, next) => {
   req.logout()
   console.log("logout")
-  res.status(200).json({ message: 'Log out success!' })
+  res.status(200).json({ message: 'Has cerrado tu sesión' })
 })
 
 

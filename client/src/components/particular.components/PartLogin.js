@@ -3,11 +3,17 @@ import AuthServices from '../../services/auth.services';
 
 import { Link } from 'react-router-dom'
 
+import {Toast} from 'react-bootstrap'
+
 class PartLogin extends Component {
   constructor(props){
     super(props);
-    this.state = { password: '', username: '' };
-    this.authServices = new AuthServices();
+    this.state = { 
+      password: '', 
+      username: '', 
+      error: null,
+      showToast: false}
+    this.authServices = new AuthServices()
   }
 
   handleChangeInput = e => this.setState({ [e.target.name]: e.target.value })
@@ -23,14 +29,28 @@ class PartLogin extends Component {
       this.props.history.push('/particular/profile')
     
     })
-    .catch((err) => console.log('error al mandar la info de logeo al back', err.response.data.message))
+    .catch((err) => {
+      console.log('error al mandar la info de logeo al back', err.response.data.message)
+      this.setState({password: '', username: '', error: err.response.data.message})
+      this.handleToastOpen()
+    })
   }
+
+  handleToastOpen = () => this.setState({ showToast: true })
+  handleToastClose = () => this.setState({ showToast: false, err: null })
 
 
   render(){
     
     return(
     <div className="background-repeat">
+
+      <Toast onClose={this.handleToastClose} show={this.state.showToast} delay={4000} autohide style={{ position: 'fixed', bottom: 350, right: 450, zIndex: 9999 }}>
+          <Toast.Header>
+              <strong className="mr-auto">¡Ups!Parece que ha habido un error:</strong>
+          </Toast.Header>
+          <Toast.Body>{this.state.error}</Toast.Body>
+      </Toast>
 
       <div className="container">
         <Link to="/"><img src="/images/Handy-logo.png" alt="handy logo"></img></Link>  

@@ -3,10 +3,14 @@ import AuthServices from '../../services/auth.services'
 
 import { Link } from 'react-router-dom'
 
+import {Toast} from 'react-bootstrap'
+
 class PartSignup extends Component {
   constructor(props){
     super(props);
-    this.state = { username: '', password: '', email: '', phoneNumber: '' }
+    this.state = { username: '', password: '', email: '', phoneNumber: '',
+    error: null,
+    showToast: false }
     this.authServices = new AuthServices()
   }
 
@@ -23,13 +27,28 @@ class PartSignup extends Component {
       this.props.history.push('/particular/profile')
     
     })
-    .catch((err) => console.log('error al mandar la info de registro al back', err))
+    .catch((err) => {
+      console.log('error al mandar la info de registro al back', {err})
+      this.setState({username: '', password: '', email: '', phoneNumber: '', error: err.response.data.message})
+      this.handleToastOpen()
+    })
   }
 
+  handleToastOpen = () => this.setState({ showToast: true })
+  handleToastClose = () => this.setState({ showToast: false, err: null })
 
   render(){
     return(
       <div className="background-repeat">
+
+      <Toast onClose={this.handleToastClose} show={this.state.showToast} delay={4000} autohide style={{ position: 'fixed', bottom: 350, right: 450, zIndex: 9999 }}>
+          <Toast.Header>
+              <strong className="mr-auto">¡Ups!Parece que ha habido un error:</strong>
+          </Toast.Header>
+          <Toast.Body>{this.state.error}</Toast.Body>
+      </Toast>
+
+
         <div className="container">
             <Link to="/"><img src="/images/Handy-logo.png" alt="handy logo"></img></Link> 
             <div className="row justify-content-center">
